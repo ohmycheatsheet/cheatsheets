@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react'
 import { api } from '@omcs/request/node'
 import { Input, Dropdown, Typography } from 'granen'
-import { Drop, Search, Spinner } from 'styled-cssgg'
+import { Search, Spinner } from 'styled-cssgg'
 import debounce from 'lodash.debounce'
 import styled from 'styled-components'
 import type { Hit } from 'react-instantsearch-core'
@@ -136,7 +136,6 @@ export const CheatSheetSearchBox = () => {
         attributesToHighlight: [
           'body:100'
         ],
-        removeWordsIfNoResults: 'none',
       },
     }, {
       indexName: SEARCH_LABELS_INDEX_NAME,
@@ -147,15 +146,6 @@ export const CheatSheetSearchBox = () => {
         highlightPostTag: "</mark>"
       }
     }];
-    // const queries: Queries = [{
-    //   indexName: SEARCH_LABELS_INDEX_NAME,
-    //   query,
-    //   params: {
-    //     hitsPerPage: 3,
-    //     highlightPreTag:'<mark class="search-highlight">',
-    //     highlightPostTag: "</mark>"
-    //   }
-    // }];
     searchClient.multipleQueries(queries).then(({ results }: { results: any }) => {
       setValue(results as HitsProps['value'])
     });
