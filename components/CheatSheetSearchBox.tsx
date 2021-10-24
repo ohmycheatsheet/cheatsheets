@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react'
 import { api } from '@omcs/request/node'
 import { Input, Dropdown, Typography } from 'granen'
-import { Search } from 'styled-cssgg'
+import { Drop, Search, Spinner } from 'styled-cssgg'
 import debounce from 'lodash.debounce'
 import styled from 'styled-components'
 import type { Hit } from 'react-instantsearch-core'
@@ -14,6 +14,8 @@ const searchClient: SearchClient = api.getSearchClient(
   process.env.NEXT_PUBLIC_ALGOLIA_APPID!,
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY!,
 )
+
+type Queries = Parameters<SearchClient['multipleQueries']>[0]
 
 const unShipProps: any = {
   enterkeyhint: 'search',
@@ -36,6 +38,7 @@ type HitsProps = {
     hits: Hit[]
     index: typeof SEARCH_CHEATSHEET_INDEX_NAME | typeof SEARCH_LABELS_INDEX_NAME
   }[]
+  loading: boolean
 }
 
 const Menu = styled(Dropdown.Menu)`
@@ -52,6 +55,13 @@ const Menu = styled(Dropdown.Menu)`
 
 const Hits = (props: HitsProps) => {
   const router = useRouter()
+  if (props.loading) {
+    return <Dropdown.Menu>
+      <Item>
+        <Spinner />
+      </Item>
+    </Dropdown.Menu>
+  }
   if (props.value.length === 0) {
     return (
       <Dropdown.Menu>
@@ -114,15 +124,20 @@ const Hits = (props: HitsProps) => {
 export const CheatSheetSearchBox = () => {
   const [input, setInput] = useState("")
   const [value, setValue] = useState<HitsProps['value']>([])
+  const [loading, setLoading] = useState(false)
   const searchApi = useRef(debounce((query = '') => {
-    const queries = [{
+    const queries: Queries = [{
       indexName: SEARCH_CHEATSHEET_INDEX_NAME,
       query,
       params: {
         hitsPerPage: 3,
         highlightPreTag:'<mark class="search-highlight">',
-        highlightPostTag: "</mark>"
-      }
+        highlightPostTag: "</mark>",
+        attributesToHighlight: [
+          'body:100'
+        ],
+        removeWordsIfNoResults: 'none',
+      },
     }, {
       indexName: SEARCH_LABELS_INDEX_NAME,
       query,
@@ -132,19 +147,30 @@ export const CheatSheetSearchBox = () => {
         highlightPostTag: "</mark>"
       }
     }];
-    searchClient.multipleQueries(queries, { strategy: 'stopIfEnoughMatches' }).then(({ results }: { results: any }) => {
+    // const queries: Queries = [{
+    //   indexName: SEARCH_LABELS_INDEX_NAME,
+    //   query,
+    //   params: {
+    //     hitsPerPage: 3,
+    //     highlightPreTag:'<mark class="search-highlight">',
+    //     highlightPostTag: "</mark>"
+    //   }
+    // }];
+    searchClient.multipleQueries(queries).then(({ results }: { results: any }) => {
       setValue(results as HitsProps['value'])
     });
   }, 500))
   const handleChange = useCallback((e) => {
     setInput(e.currentTarget.value)
+    setLoading(true)
     searchApi.current(e.currentTarget.value)
+    setLoading(false)
   }, [])
   return (
     <Dropdown
       trigger="click"
       getPopupContainer={() => document.querySelector('#SEARCH_CONTAINER')!}
-      content={<Hits value={value} />}
+      content={<Hits loading={loading} value={value} />}
       placement="bottomStart"
       id="SEARCH_CONTAINER"
     >

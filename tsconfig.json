@@ -6,7 +6,7 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
     "lib": ["dom", "es2017"],
-    "module": "node12",
+    "module": "esnext",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": false,
@@ -21,7 +21,8 @@
       "~/*": ["./*"],
       "@/*": ["pages/*"]
     },
-    "isolatedModules": true
+    "isolatedModules": true,
+    "moduleResolution": "node"
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx", "next.config.js"]
