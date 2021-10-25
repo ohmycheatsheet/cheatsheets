@@ -1,6 +1,6 @@
 {
   "name": "cheatsheets",
-  "version": "1.2.0",
+  "version": "1.0.0",
   "license": "MIT",
   "author": {
     "name": "jiangweixian"
@@ -13,7 +13,6 @@
     "export": "next export",
     "type-check": "tsc",
     "lint:fix": "eslint . --fix",
-    "prepublishOnly": "np --no-cleanup --yolo --no-publish --any-branch",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -60,6 +59,7 @@
   },
   "devDependencies": {
     "@aiou/eslint-config": "^0.2.2",
+    "@changesets/cli": "^2.17.0",
     "@next/eslint-plugin-next": "^11.1.2",
     "@types/classnames": "2.2.10",
     "@types/lodash.compact": "^3.0.6",
