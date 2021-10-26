@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import { NextPage, GetServerSideProps } from 'next'
-import { api } from '@omcs/request/node'
+import { api } from '~/utils/middlewares'
 import { Issue } from '@omcs/request/types'
 import styled from 'styled-components'
 

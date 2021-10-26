@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef } from 'react'
-import { api } from '@omcs/request/node'
+import { algolia } from '@omcs/request/algolia'
 import { Input, Dropdown, Typography } from 'granen'
 import { Search, Spinner } from 'styled-cssgg'
 import debounce from 'lodash.debounce'
@@ -10,7 +10,7 @@ import type { SearchClient } from 'algoliasearch'
 import { SEARCH_CHEATSHEET_INDEX_NAME, SEARCH_LABELS_INDEX_NAME, dictionary } from '~/utils/constants'
 import { useRouter } from 'next/router'
 
-const searchClient: SearchClient = api.getSearchClient(
+const searchClient: SearchClient = algolia.getSearchClient(
   process.env.NEXT_PUBLIC_ALGOLIA_APPID!,
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY!,
 )

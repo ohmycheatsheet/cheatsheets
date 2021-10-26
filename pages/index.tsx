@@ -3,7 +3,7 @@ import { NextPage, GetServerSideProps } from 'next'
 import { Spinner } from 'styled-cssgg'
 import { animated, useTrail } from '@react-spring/web'
 import { QueryStatus } from 'react-query'
-import { api } from '@omcs/request/node'
+import { api } from '~/utils/middlewares'
 import { Issue } from '@omcs/request/types'
 import { Typography } from 'granen'
 import styled from 'styled-components'
@@ -122,8 +122,8 @@ const IndexPage: NextPage<{ recent: Issue[]; someday: Issue[] }> = props => {
   )
 }
 
-export async function getServerSideProps(_ctx: Parameters<GetServerSideProps>[0]) {
-  const recent = await api.search({ content: _ctx.query.q as string })
+export async function getServerSideProps(ctx: Parameters<GetServerSideProps>[0]) {
+  const recent = await api.search({ content: ctx.query.q as string })
   const someday = await api.someday()
   return { props: { recent: recent.hits, someday: someday.hits || [] } }
 }

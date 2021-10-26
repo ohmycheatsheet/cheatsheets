@@ -1,12 +1,13 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import { api } from '@omcs/request/node'
+import { NextApiResponse } from 'next'
+import { NextApiRequest } from '~/interface'
+import { withOmcs } from '~/utils/middlewares'
 
 import { PAGE_SIZE } from '~/utils/constants'
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default withOmcs(async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const offset = Number(req.query.offset || 0)
-    const results = await api.listLabels({
+    const results = await req._omcs.listLabels({
       offset,
       length: PAGE_SIZE,
     })
@@ -16,4 +17,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (err) {
     res.status(500).json({ statusCode: 500, message: (err as any).message })
   }
-}
+})
