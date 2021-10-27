@@ -6,13 +6,10 @@ module.exports = withTM(
   withImages({
     webpack: (config) => {
       config.resolve.alias['~'] = path.join(__dirname, '')
-      // if (process.env.NODE_ENV === 'development') {
-      //   config.resolve.alias.react = path.resolve(__dirname, './node_modules/react')
-      // }
+      if (process.env.NODE_ENV === 'development' && process.env.DEBUG === 'on') {
+        config.resolve.alias.react = path.resolve(__dirname, './node_modules/react')
+      }
       return config
-    },
-    env: {
-      IS_MOCK: true,
     },
   }),
 )
