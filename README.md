@@ -1,4 +1,4 @@
-![cheatsheets](https://i.loli.net/2020/04/24/skJDnlE4rUPKhFg.png)
+![cheatsheets](https://user-images.githubusercontent.com/6839576/139080815-b8e556a0-fcca-41d0-83a1-0faffaa42be1.png)
 
 ![image](https://user-images.githubusercontent.com/6839576/105569235-f6075100-5d7a-11eb-9444-eaa6ee7905a6.png)
 
@@ -6,6 +6,9 @@
 > 
 > *`@2021/10/26 22:22:56` This app still under beta version~*
 
+## tools
+
+- [ctrlc](https://github.com/ohmycheatsheet/ctrlc) a chrome extension for pin `cheatsheet`
 
 ## features
 
