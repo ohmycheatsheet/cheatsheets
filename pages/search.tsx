@@ -4,7 +4,6 @@
 
 import React from 'react'
 import { NextPage, GetServerSideProps } from 'next'
-import { api } from '@omcs/request/node'
 import { Label } from '@omcs/request/types'
 import { useRouter } from 'next/router'
 import { animated, useTrail } from '@react-spring/web'
@@ -14,6 +13,7 @@ import styled from 'styled-components'
 import Layout from '~/components/Layout'
 import { Sheet } from '~/components/Sheet'
 import { SEARCH_LABELS_INDEX_NAME, SEARCH_CHEATSHEET_INDEX_NAME } from '~/utils/constants'
+import { api } from '~/utils/middlewares'
 
 const Container = styled.div`
   @apply px-12 py-6;
@@ -72,9 +72,6 @@ const LabelSearchResults = ({ issues = {} }: { issues?: any }) => {
   )
 }
 
-/**
- * @fixme copy from index.recent
- */
 const CheatSheetSearchResults = ({
   issues = {},
   highlight,
@@ -124,8 +121,8 @@ const SearchPage: NextPage<{ hits: any }> = props => {
   )
 }
 
-export async function getServerSideProps(_ctx: Parameters<GetServerSideProps>[0]) {
-  const search = await api.multipleSearch({ query: _ctx.query.q as string })
+export async function getServerSideProps(ctx: Parameters<GetServerSideProps>[0]) {
+  const search = await api.multipleSearch({ query: ctx.query.q as string })
   return { props: { hits: search } }
 }
 
