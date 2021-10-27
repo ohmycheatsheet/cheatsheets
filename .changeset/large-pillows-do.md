@@ -1,0 +1,5 @@
+---
+"cheatsheets": patch
+---
+
+search loading
