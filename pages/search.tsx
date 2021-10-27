@@ -105,7 +105,7 @@ const CheatSheetSearchResults = ({
   )
 }
 
-const SearchPage: NextPage<{ hits: any }> = props => {
+const SearchPage: NextPage<{ hits: any }> = (props) => {
   const keyword = useRouter().query.q as string
   return (
     <Layout>

@@ -20,7 +20,7 @@ const ShardSheet = styled(Sheet)`
 `
 
 // TODO: just like raycast
-const CheatSheetById: NextPage<{ issue: Issue }> = props => {
+const CheatSheetById: NextPage<{ issue: Issue }> = (props) => {
   return (
     <Layout>
       <Meta title={props.issue?.title} description={props.issue?.body} />
