@@ -1,10 +1,8 @@
 name: "cheatsheet bot"
 
 on:
-  push:
-    branches:
-      - master
-      - 'v*'
+  schedule:
+  - cron: "0 11 * * *"
 
 jobs:
   # test action works running from the schedule
@@ -15,3 +13,6 @@ jobs:
     - uses: ohmycheatsheet/actions-friday@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        ALGOLIA_APPID: ${{ secrets.ALGOLIA_APPID }}
+        ALGOLIA_APP_KEY: ${{ secrets.ALGOLIA_APP_KEY }}
