@@ -1,11 +1,11 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@aiou/eslint-config': ^0.2.2
+  '@aiou/eslint-config': ^0.3.2
   '@changesets/cli': ^2.17.0
   '@lotips/core': ^0.8.3-alpha.2
   '@next/eslint-plugin-next': ^11.1.2
-  '@omcs/request': 1.1.0
+  '@omcs/request': 1.1.1
   '@react-spring/web': ^9.2.4
   '@types/classnames': 2.2.10
   '@types/lodash.compact': ^3.0.6
@@ -72,7 +72,7 @@ specifiers:
 
 dependencies:
   '@lotips/core': 0.8.3
-  '@omcs/request': 1.1.0_react@17.0.2
+  '@omcs/request': 1.1.1_react@17.0.2
   '@react-spring/web': 9.3.0_react-dom@17.0.2+react@17.0.2
   algoliasearch: 4.10.5
   axios: 0.24.0
@@ -103,7 +103,7 @@ dependencies:
   swr: 1.0.1_react@17.0.2
 
 devDependencies:
-  '@aiou/eslint-config': 0.2.2_c2732744fe499a9b87a4e97c0aa8d579
+  '@aiou/eslint-config': 0.3.2_c2732744fe499a9b87a4e97c0aa8d579
   '@changesets/cli': 2.17.0
   '@next/eslint-plugin-next': 11.1.2
   '@types/classnames': 2.2.10
@@ -144,8 +144,8 @@ devDependencies:
 
 packages:
 
-  /@aiou/eslint-config-basic/0.1.5_eslint@7.32.0:
-    resolution: {integrity: sha512-9XjZnwtrC7o7bmXIcWYHUAc80gqZ0vff2I3fOkbpqcdhGCCOHHnLQrpOtWYzL0Ytp7YR8hWre7NCmZDsOjWNGg==}
+  /@aiou/eslint-config-basic/0.2.2_eslint@7.32.0:
+    resolution: {integrity: sha512-y2vc/+NY0MtCYfQ+B7qCbfcPxNhGE4lq09DHIG1WND67lMNKD4GdudGJbH5uLs7raVnq4T4A1PotnjZo7k1JsA==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
@@ -165,12 +165,12 @@ packages:
       - supports-color
     dev: true
 
-  /@aiou/eslint-config-react/0.1.3_0224b7d7521de332d97364a2daae353c:
-    resolution: {integrity: sha512-c/dXAwMR2gW3TgkNWgRNMWDLW9MqQB4kDvtoceSQdr8XU5yLARO4zWIkizlCGkrSWNHEqYaMB9UF/hmJZyoo7g==}
+  /@aiou/eslint-config-react/0.2.2_0224b7d7521de332d97364a2daae353c:
+    resolution: {integrity: sha512-TCPkX+u2oxg/qZnmvNiUvE6HEG//j1QLa9UqUax2jqLS8bPszm2WbzVjUCPMzoN/ruCadTYXexO0wHC8+4Za1A==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
-      '@aiou/eslint-config-ts': 0.1.3_0224b7d7521de332d97364a2daae353c
+      '@aiou/eslint-config-ts': 0.2.2_0224b7d7521de332d97364a2daae353c
       eslint: 7.32.0
       eslint-plugin-react: 7.26.1_eslint@7.32.0
       eslint-plugin-react-hooks: 4.2.0_eslint@7.32.0
@@ -179,13 +179,13 @@ packages:
       - typescript
     dev: true
 
-  /@aiou/eslint-config-ts/0.1.3_0224b7d7521de332d97364a2daae353c:
-    resolution: {integrity: sha512-OjaNIu78MLkDTe1wEjNrfm0bonlmqyUxaD6GTP1P3Z/aiV9LMwOo1I12xwuk4RQP1hbQ/uzArFEPWHQ7gIW5RA==}
+  /@aiou/eslint-config-ts/0.2.2_0224b7d7521de332d97364a2daae353c:
+    resolution: {integrity: sha512-udDs/srrJNTpAoHzb7B6Pdw6bKNHoOwedf4BOz19+KnSyzEAGc6XdhO159O/j12fGXAh0pEWCMmsgkTZWOZxlQ==}
     peerDependencies:
       eslint: '>=7.4.0'
       typescript: '>=3.9'
     dependencies:
-      '@aiou/eslint-config-basic': 0.1.5_eslint@7.32.0
+      '@aiou/eslint-config-basic': 0.2.2_eslint@7.32.0
       '@typescript-eslint/eslint-plugin': 4.33.0_bbcbb18853de8430320cb1963b73fa1c
       '@typescript-eslint/parser': 4.33.0_0224b7d7521de332d97364a2daae353c
       eslint: 7.32.0
@@ -194,16 +194,16 @@ packages:
       - supports-color
     dev: true
 
-  /@aiou/eslint-config/0.2.2_c2732744fe499a9b87a4e97c0aa8d579:
-    resolution: {integrity: sha512-lgsWE3Iga5J5erkdkb4/vmBZg8MYQHR6bk3D5JMVX2ZskU6i3LM/0axhkALH2MtbKCJgCvz5v1+oKYNw4f6d9A==}
+  /@aiou/eslint-config/0.3.2_c2732744fe499a9b87a4e97c0aa8d579:
+    resolution: {integrity: sha512-ZnEWsinz4X0I5YVh6f4fjxADv0AxfrHJN7E29J+BJ8eO7qFk8aKDYlY8kFO405aurpYlw6lIHoU3cgRMXkmB5Q==}
     peerDependencies:
       eslint: '>=7.4.0'
       prettier: '>=2.2.1'
       pretty-quick: '>=3.1.0'
     dependencies:
-      '@aiou/eslint-config-react': 0.1.3_0224b7d7521de332d97364a2daae353c
-      '@aiou/eslint-ignore': 0.1.1
-      '@aiou/eslint-plugin-progress': 0.1.6_eslint@7.32.0
+      '@aiou/eslint-config-react': 0.2.2_0224b7d7521de332d97364a2daae353c
+      '@aiou/eslint-ignore': 0.1.2
+      '@aiou/eslint-plugin-progress': 0.1.7_eslint@7.32.0
       eslint: 7.32.0
       eslint-config-prettier: 8.3.0_eslint@7.32.0
       eslint-plugin-prettier: 3.4.1_6e975bd57c7acf028c1a9ddbbf60c898
@@ -213,12 +213,12 @@ packages:
       - typescript
     dev: true
 
-  /@aiou/eslint-ignore/0.1.1:
-    resolution: {integrity: sha512-EO+wMRPhjH0pdngSFvFIDdx7t4LOwJet0dYg+w3mObTnUZrm+5eUO2chrMfZ8pgNYLF5pMB+2zg5DuhL11VM6A==}
+  /@aiou/eslint-ignore/0.1.2:
+    resolution: {integrity: sha512-UVJalNnATqay1bTT+EInoeJPgpINrruDjLdlDDl5oZp28GosRLr9i2VVVJ740DHablGNIuCEtTdUj0EupBGcIA==}
     dev: true
 
-  /@aiou/eslint-plugin-progress/0.1.6_eslint@7.32.0:
-    resolution: {integrity: sha512-znLCfyrUZpx3oCSDIkD6zw6U6Xgl/tpxzKttZyA5ol2Pa/Nbh1TaGK+VeBHHlAOYkGktpGrZ0ELVbdLeyEaQ+w==}
+  /@aiou/eslint-plugin-progress/0.1.7_eslint@7.32.0:
+    resolution: {integrity: sha512-WvocvhLoi0zqiApNZ3/X2IY3o5aOy/C3QUYZYKQIgyPdh+vwF1KhT3uhPTZEOnLMI79+C/nodXTNVoUWgCVfvQ==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
@@ -1103,8 +1103,8 @@ packages:
       '@octokit/openapi-types': 11.2.0
     dev: false
 
-  /@omcs/request/1.1.0_react@17.0.2:
-    resolution: {integrity: sha512-1naAQLwBHu4HablElrgD2QT+y2zy5BiS0od8Uwg+km0FrKA5K0L7xMe1s/FteprjpEdzrYf37b2owCaY9m78AQ==}
+  /@omcs/request/1.1.1_react@17.0.2:
+    resolution: {integrity: sha512-rd8kxul/2fJV1HJxsDR/HcDvQ5a7f/+YYEAiW0xZJrz6jg3IAqSstirld7Uzc6n+5fdBp9TQI3xW1aRIHjM5xg==}
     dependencies:
       '@algolia/cache-in-memory': 4.11.0
       '@algolia/logger-common': 4.11.0
@@ -1116,7 +1116,7 @@ packages:
       lodash.compact: 3.0.1
       lodash.keyby: 4.6.0
       lodash.sample: 4.2.1
-      react-instantsearch-core: 6.14.0_7ce4838e463d1525dea7855d64eb110e
+      react-instantsearch-core: 6.15.0_7ce4838e463d1525dea7855d64eb110e
     transitivePeerDependencies:
       - debug
       - react
@@ -5395,8 +5395,8 @@ packages:
       react: 17.0.2
     dev: false
 
-  /react-instantsearch-core/6.14.0_7ce4838e463d1525dea7855d64eb110e:
-    resolution: {integrity: sha512-75ifgxrnMH4MdGhhKnDdRjlHal5W7b6X4pvpdJCOhRG0aq0UjIBCVUJ3MArl3li3EroWShqE25yGIT872QTR0g==}
+  /react-instantsearch-core/6.15.0_7ce4838e463d1525dea7855d64eb110e:
+    resolution: {integrity: sha512-mp6kWtyDvf3qeAuNxl8m/f+7pBpf1Enlao69oXyYiTsx582nayE8Wo3g2Des0o6l+D1L09UgvGa+1b/bmkTD2w==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 18'
