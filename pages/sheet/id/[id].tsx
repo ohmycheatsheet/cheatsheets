@@ -19,7 +19,6 @@ const ShardSheet = styled(Sheet)`
   @apply w-1/2 shadow-2xl;
 `
 
-// TODO: just like raycast
 const CheatSheetById: NextPage<{ issue: Issue }> = (props) => {
   return (
     <Layout>

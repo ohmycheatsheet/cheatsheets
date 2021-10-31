@@ -5,7 +5,7 @@ specifiers:
   '@changesets/cli': ^2.17.0
   '@lotips/core': ^0.8.3-alpha.2
   '@next/eslint-plugin-next': ^11.1.2
-  '@omcs/request': 1.1.0
+  '@omcs/request': 1.1.1
   '@react-spring/web': ^9.2.4
   '@types/classnames': 2.2.10
   '@types/lodash.compact': ^3.0.6
@@ -72,7 +72,7 @@ specifiers:
 
 dependencies:
   '@lotips/core': 0.8.3
-  '@omcs/request': 1.1.0_react@17.0.2
+  '@omcs/request': 1.1.1_react@17.0.2
   '@react-spring/web': 9.3.0_react-dom@17.0.2+react@17.0.2
   algoliasearch: 4.10.5
   axios: 0.24.0
@@ -1103,8 +1103,8 @@ packages:
       '@octokit/openapi-types': 11.2.0
     dev: false
 
-  /@omcs/request/1.1.0_react@17.0.2:
-    resolution: {integrity: sha512-1naAQLwBHu4HablElrgD2QT+y2zy5BiS0od8Uwg+km0FrKA5K0L7xMe1s/FteprjpEdzrYf37b2owCaY9m78AQ==}
+  /@omcs/request/1.1.1_react@17.0.2:
+    resolution: {integrity: sha512-rd8kxul/2fJV1HJxsDR/HcDvQ5a7f/+YYEAiW0xZJrz6jg3IAqSstirld7Uzc6n+5fdBp9TQI3xW1aRIHjM5xg==}
     dependencies:
       '@algolia/cache-in-memory': 4.11.0
       '@algolia/logger-common': 4.11.0
@@ -1116,7 +1116,7 @@ packages:
       lodash.compact: 3.0.1
       lodash.keyby: 4.6.0
       lodash.sample: 4.2.1
-      react-instantsearch-core: 6.14.0_7ce4838e463d1525dea7855d64eb110e
+      react-instantsearch-core: 6.15.0_7ce4838e463d1525dea7855d64eb110e
     transitivePeerDependencies:
       - debug
       - react
@@ -5395,8 +5395,8 @@ packages:
       react: 17.0.2
     dev: false
 
-  /react-instantsearch-core/6.14.0_7ce4838e463d1525dea7855d64eb110e:
-    resolution: {integrity: sha512-75ifgxrnMH4MdGhhKnDdRjlHal5W7b6X4pvpdJCOhRG0aq0UjIBCVUJ3MArl3li3EroWShqE25yGIT872QTR0g==}
+  /react-instantsearch-core/6.15.0_7ce4838e463d1525dea7855d64eb110e:
+    resolution: {integrity: sha512-mp6kWtyDvf3qeAuNxl8m/f+7pBpf1Enlao69oXyYiTsx582nayE8Wo3g2Des0o6l+D1L09UgvGa+1b/bmkTD2w==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 18'
