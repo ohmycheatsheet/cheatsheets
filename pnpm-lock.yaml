@@ -5,7 +5,7 @@ specifiers:
   '@changesets/cli': ^2.17.0
   '@lotips/core': ^0.8.3-alpha.2
   '@next/eslint-plugin-next': ^11.1.2
-  '@omcs/request': 1.1.1
+  '@omcs/request': 1.2.1
   '@react-spring/web': ^9.2.4
   '@types/classnames': 2.2.10
   '@types/cors': ^2.8.12
@@ -74,7 +74,7 @@ specifiers:
 
 dependencies:
   '@lotips/core': 0.8.3
-  '@omcs/request': 1.1.1_react@17.0.2
+  '@omcs/request': 1.2.1_react@17.0.2
   '@react-spring/web': 9.3.0_react-dom@17.0.2+react@17.0.2
   algoliasearch: 4.10.5
   axios: 0.24.0
@@ -1107,8 +1107,8 @@ packages:
       '@octokit/openapi-types': 11.2.0
     dev: false
 
-  /@omcs/request/1.1.1_react@17.0.2:
-    resolution: {integrity: sha512-rd8kxul/2fJV1HJxsDR/HcDvQ5a7f/+YYEAiW0xZJrz6jg3IAqSstirld7Uzc6n+5fdBp9TQI3xW1aRIHjM5xg==}
+  /@omcs/request/1.2.1_react@17.0.2:
+    resolution: {integrity: sha512-6EtxC9lmbP9DnJdmlrjOAgMXibgKZgjodfB+0hFjFsATT2OQjxek4NdHMAnnONTZ6+YKSBBMVGXWJfreFSnpzw==}
     dependencies:
       '@algolia/cache-in-memory': 4.11.0
       '@algolia/logger-common': 4.11.0
