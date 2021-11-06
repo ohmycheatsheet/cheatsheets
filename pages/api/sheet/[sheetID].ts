@@ -5,7 +5,7 @@ import { withOmcs, withCors } from '~/utils/middlewares'
 export default withCors(
   withOmcs(async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-      const results = await req._omcs.getLabel(req.query.labelID as string)
+      const results = await req._omcs.getIssue(req.query.sheetID as string)
       res.statusCode = 200
       res.setHeader('Content-Type', 'application/json')
       res.end(JSON.stringify(results))
