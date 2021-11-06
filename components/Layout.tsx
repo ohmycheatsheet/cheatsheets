@@ -52,6 +52,7 @@ const Container = styled(GranenLayout)`
 const Main = styled(GranenLayout.Main)`
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%),
     radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%) #989898;
+  background-color: var(--bg-color-1);
   background-blend-mode: multiply, multiply;
 
   [data-role='layout-content'] {
