@@ -10,21 +10,21 @@ import styled from 'styled-components'
 import { api } from '~/request/client'
 import { PAGE_SIZE } from '~/utils/constants'
 
-const Item = styled.span`
-  @apply flex items-center w-full gap-4;
-
-  --ggs: 0.75;
-`
-
-const SpinnerContainer = styled.div`
-  @apply w-full flex items-center justify-center;
-`
-
 const Aside = styled(Layout.Aside)`
   [data-role='menu-inner'] {
     @apply w-full overflow-auto;
 
     height: calc(100vh - 64px);
+  }
+
+  .label-item {
+    @apply flex items-center w-full gap-4;
+
+    --ggs: 0.75;
+  }
+
+  .spinner {
+    @apply w-full flex items-center justify-center;
   }
 `
 
@@ -59,9 +59,9 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
           loadMore={(page) => setSize(page)}
           loader={
             isRefreshing && !isReachingEnd ? (
-              <SpinnerContainer>
+              <div className="spinner">
                 <Spinner />
-              </SpinnerContainer>
+              </div>
             ) : (
               <>~</>
             )
@@ -72,11 +72,11 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
               <>
                 {page?.hits?.map((v) => (
                   <Menu.Item key={v.id}>
-                    <Link href="/sheet/label/[id]" as={`/sheet/label/${v.id}`}>
-                      <Item>
+                    <Link href="/sheet/label/[id]" as={`/sheet/label/${v.id}`} passHref={true}>
+                      <span className='label-item'>
                         <Hashtag />
                         {v.name}
-                      </Item>
+                      </span>
                     </Link>
                   </Menu.Item>
                 ))}

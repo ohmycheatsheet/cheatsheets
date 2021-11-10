@@ -37,7 +37,7 @@ const Container = styled.div`
 
 const DividerLine = styled(Divider)`
   && {
-    @apply -mx-4;
+    @apply -mx-4 w-auto;
   }
 `
 
