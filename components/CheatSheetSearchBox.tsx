@@ -46,6 +46,9 @@ type HitsProps = {
 
 const Menu = styled(Dropdown.Menu)`
   && {
+    max-height: 400px;
+    overflow-y: auto;
+
     [data-role='menu-subtitle'] {
       @apply p-0;
     }
@@ -152,7 +155,6 @@ export const CheatSheetSearchBox = () => {
             hitsPerPage: 3,
             highlightPreTag: '<mark class="search-highlight">',
             highlightPostTag: '</mark>',
-            attributesToHighlight: ['body:100'],
           },
         },
         {
