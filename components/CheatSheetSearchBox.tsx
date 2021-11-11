@@ -22,7 +22,7 @@ const searchClient: SearchClient = algolia.getSearchClient(
 type Queries = Parameters<SearchClient['multipleQueries']>[0]
 
 const unShipProps: any = {
-  enterkeyhint: 'search',
+  enterKeyHint: 'search',
 }
 
 const Item = styled(Dropdown.Item)`

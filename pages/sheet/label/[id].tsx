@@ -55,7 +55,7 @@ const CheetsheetByLabel: NextPage<{ data: Issue[]; label: Label }> = (props) => 
   const { data, setSize, isValidating } = useSWRInfinite(
     (...args: [any, any]) => getKey(...args, props.label.id),
     async (_: string, _namespace: string, index: number) => {
-      return client.github.issues({ offset: (index || 0) * PAGE_SIZE, labelID: props.label.id })
+      return client.github.sheets({ offset: (index || 0) * PAGE_SIZE, labelID: props.label.id })
     },
     { fallbackData: [{ hits: props.data }] },
   )

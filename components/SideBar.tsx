@@ -38,17 +38,19 @@ const getKey = (pageIndex: number, previousPageData: { hits: Label[] } | null) =
 }
 
 export const SideBar = ({ open = true, ...props }: { open?: boolean; className?: string }) => {
-  const { data, size, setSize, isValidating } = useSWRInfinite(
+  const { data, setSize, isValidating } = useSWRInfinite(
     getKey,
     async (_: string, index: number) => {
       return api.github.labels((index || 0) * PAGE_SIZE)
     },
     {},
   )
-  const isRefreshing = isValidating && data && data.length === size
   const isEmpty = data?.[0]?.hits?.length === 0
   const isReachingEnd = isEmpty || (data && data[data.length - 1]?.hits?.length < PAGE_SIZE)
   const hasMore = !!data && !isReachingEnd && !isValidating
+  const hits = data?.reduce((acc, cur) => {
+    return acc.concat(cur.hits)
+  }, [] as Label[])
   return (
     <Aside open={open} className={props.className}>
       <Menu menuTheme="dark" size="lg">
@@ -58,31 +60,23 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
           useWindow={false}
           loadMore={(page) => setSize(page)}
           loader={
-            isRefreshing && !isReachingEnd ? (
-              <div className="spinner">
-                <Spinner />
-              </div>
-            ) : (
-              <>~</>
-            )
+            <div className="spinner">
+              <Spinner />
+            </div>
           }
         >
-          {data?.map((page) => {
+          {hits?.map((v) => {
             return (
-              <>
-                {page?.hits?.map((v) => (
-                  <Menu.Item key={v.id}>
-                    <Link href="/sheet/label/[id]" as={`/sheet/label/${v.id}`} passHref={true}>
-                      <span className="label-item">
-                        <Hashtag />
-                        {v.name}
-                      </span>
-                    </Link>
-                  </Menu.Item>
-                ))}
-              </>
+              <Menu.Item key={v.objectID}>
+                <Link href="/sheet/label/[id]" as={`/sheet/label/${v.objectID}`} passHref={true}>
+                  <span className="label-item">
+                    <Hashtag />
+                    {v.name}
+                  </span>
+                </Link>
+              </Menu.Item>
             )
-          })}
+          }) || <></>}
         </InfScroller>
       </Menu>
     </Aside>
