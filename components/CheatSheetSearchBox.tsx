@@ -188,7 +188,6 @@ export const CheatSheetSearchBox = () => {
     >
       <Input
         prefix={<Search />}
-        borderless={true}
         {...unShipProps}
         type="input"
         size="lg"
