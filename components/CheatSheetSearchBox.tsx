@@ -155,6 +155,7 @@ export const CheatSheetSearchBox = () => {
             hitsPerPage: 3,
             highlightPreTag: '<mark class="search-highlight">',
             highlightPostTag: '</mark>',
+            facetFilters: ['state:OPEN'],
           },
         },
         {
