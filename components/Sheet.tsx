@@ -157,7 +157,7 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
   return (
     <>
       <Container
-        borderless={true}
+        borderless="true"
         className={props.className}
         style={props.style}
         key={v.title}
