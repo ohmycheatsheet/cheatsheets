@@ -123,7 +123,7 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
   const Operations = (
     <div className="operations">
       <Icon
-        className='operation'
+        className="operation"
         onClick={() => {
           share(idcard, label, v.title, v.body).then((needNotify) => {
             if (needNotify) {
@@ -157,7 +157,7 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
   return (
     <>
       <Container
-        borderless={true}
+        borderless="true"
         className={props.className}
         style={props.style}
         key={v.title}
