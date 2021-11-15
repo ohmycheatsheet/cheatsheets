@@ -39,7 +39,7 @@ specifiers:
   dayjs: 1.8.24
   dotenv: ^10.0.0
   eslint: ^7.32.0
-  granen: 0.3.4
+  granen: 0.3.5
   html2canvas: 1.0.0-rc.7
   husky: ^7.0.0
   lint-staged: ^11.1.2
@@ -83,7 +83,7 @@ dependencies:
   copy-to-clipboard: 3.3.1
   cors: 2.8.5
   dayjs: 1.8.24
-  granen: 0.3.4_92007eea62d30140157552a74694b812
+  granen: 0.3.5_92007eea62d30140157552a74694b812
   html2canvas: 1.0.0-rc.7
   lodash.compact: 3.0.1
   lodash.debounce: 4.0.8
@@ -3597,8 +3597,8 @@ packages:
   /graceful-fs/4.2.8:
     resolution: {integrity: sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==}
 
-  /granen/0.3.4_92007eea62d30140157552a74694b812:
-    resolution: {integrity: sha512-euy9V/I9iCR1ZhssAJYYbZ23kYyiwmMp5z266a2+PerDAargK/+dB19zF8+haL848pjyHiNkUe1nkhlIgAStcg==}
+  /granen/0.3.5_92007eea62d30140157552a74694b812:
+    resolution: {integrity: sha512-HdzuEjwEkHtX7z/ZZVOPMQmpfsFNotoegTdw9MsdvlWa7q4cMh435iXK+zu+S33KzVrHJXJcmPth0lipLdla5g==}
     peerDependencies:
       react: ^17.0.2
       react-dom: ^17.0.2
