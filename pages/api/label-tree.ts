@@ -8,15 +8,15 @@ import { NextApiRequest } from '~/interface'
 import { withOmcs, withCors, withAuthByToken } from '~/utils/middlewares'
 import config from '~/.omcsrc'
 
-export default withAuthByToken(
-  withCors(
+export default withCors(
+  withAuthByToken(
     withOmcs(async (req: NextApiRequest, res: NextApiResponse) => {
       try {
-        if (req._login !== config.owner) {
-          res.status(401).json({ statusCode: 401, message: 'require auth with github token' })
-          return
-        }
         if (req.method === 'POST') {
+          if (req._login !== config.owner) {
+            res.status(401).json({ statusCode: 401, message: 'require auth with github token' })
+            return
+          }
           const results = await req._omcs.updateOrCreateLabelTree({
             value: req.body.value,
           })

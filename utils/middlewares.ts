@@ -32,7 +32,7 @@ export function initCors(middleware: ReturnType<typeof Cors>) {
 const cors = initCors(
   Cors({
     // Only allow requests with GET
-    methods: ['GET'],
+    methods: ['GET', 'POST'],
   }),
 )
 
@@ -44,7 +44,7 @@ export const withCors = (handler: any) => async (req: NextApiRequest, res: NextA
 const mid = axios.create()
 const whoami = async (token: string): Promise<{ viewer: { login: string } }> => {
   mid.defaults.headers = { authorization: `token ${token}` } as any
-  const res: any = await axios.post('https://api.github.com/graphql', {
+  const res: any = await mid.post('https://api.github.com/graphql', {
     query: `
       query {
         viewer {
@@ -59,7 +59,6 @@ const whoami = async (token: string): Promise<{ viewer: { login: string } }> => 
 export const withAuthByToken =
   (handler: any) => async (req: NextApiRequest, res: NextApiResponse) => {
     const token = req.headers.authorization?.split(' ')?.[1]
-    console.log(token)
     if (!token) {
       return handler(req, res)
     }
