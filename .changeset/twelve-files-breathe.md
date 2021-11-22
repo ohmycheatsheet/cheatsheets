@@ -1,5 +1,0 @@
----
-"cheatsheets": patch
----
-
-preview sheet
