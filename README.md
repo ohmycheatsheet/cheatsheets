@@ -4,10 +4,6 @@
 
 *cheatsheets is a part of [ohmycheatsheet]() project, a self-host cheatsheet management app!*
 
-> **WARNING**
-> 
-> *`2021/11/16 22:22:05` This app still under beta version~*
-
 ## features
 
 - 🚀 Easy and Fast develop
