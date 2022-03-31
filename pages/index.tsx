@@ -3,20 +3,22 @@ import { NextPage, GetServerSideProps } from 'next'
 import { Spinner } from 'styled-cssgg'
 import { animated, useTrail } from '@react-spring/web'
 import { QueryStatus } from 'react-query'
-import { api } from '~/utils/middlewares'
 import { Issue } from '@omcs/request/types'
-import { Typography } from 'granen'
-import styled from 'styled-components'
+import { Text } from 'mayumi/text'
+import { styled } from 'mayumi/theme'
+import { useRouter } from 'next/router'
 
 import Layout from '~/components/Layout'
+import { api } from '~/utils/middlewares'
 import { Meta } from '~/components/Meta'
 import { Sheet } from '~/components/Sheet'
-import { useRouter } from 'next/router'
 import { CheatSheetSearchBox } from '~/components/CheatSheetSearchBox'
 
-const AnimatedWrapper = styled(animated.div)`
-  @apply mb-4 w-full float-left;
-`
+const AnimatedWrapper = styled(animated.div, {
+  mb: '$4',
+  w: '$full',
+  float: 'left',
+})
 
 const Recent = ({
   issues = [],
@@ -39,7 +41,7 @@ const Recent = ({
     <div>
       {issues?.length !== 0 ? (
         <>
-          <Typography.Title h1={true}>Recently</Typography.Title>
+          <Text h1={true}>Recently</Text>
           {transitions.slice(0, 2).map((props, index) => {
             return (
               <AnimatedWrapper key={index} style={props}>
@@ -78,7 +80,7 @@ const Someday = ({
     <div>
       {issues?.length !== 0 ? (
         <>
-          <Typography.Title>Someday</Typography.Title>
+          <Text h1={true}>Someday</Text>
           {transitions.map((props, index) => {
             return (
               <AnimatedWrapper key={index} style={props}>
@@ -96,25 +98,32 @@ const Someday = ({
   )
 }
 
-const SearchContainer = styled.div`
-  @apply mt-48 flex items-center justify-center w-full;
+const SearchContainer = styled('div', {
+  mt: '$48',
+  flexBox: 'center',
+  w: '$full',
+  '.mayumi-tooltip': {
+    w: '$3-5',
+    position: 'relative',
+  },
+  '.mayumi-input': {
+    w: '$full',
+    shadow: '$2xl',
+  },
+  '.mayumi-tooltip-content': {
+    w: '$full',
+  },
+})
 
-  [data-role='tooltip'] {
-    @apply w-3/5 relative;
-  }
-
-  [data-role='input'] {
-    @apply w-full shadow-2xl;
-  }
-
-  [data-role='tooltip-content'] {
-    @apply w-full;
-  }
-`
-
-const EventContainer = styled.div`
-  @apply w-4/5 m-auto px-6 pt-6 grid grid-cols-none gap-4 grid-cols-2;
-`
+const EventContainer = styled('div', {
+  w: '$4-5',
+  m: 'auto',
+  px: '$6',
+  pt: '$6',
+  display: 'grid',
+  gap: '$4',
+  gridTemplateColumns: 'repeat(2, minmax(0px, 1fr))',
+})
 
 const IndexPage: NextPage<{ recent: Issue[]; someday: Issue[] }> = (props) => {
   const keyword = useRouter().query.q as string

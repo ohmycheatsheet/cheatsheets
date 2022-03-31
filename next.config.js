@@ -1,6 +1,6 @@
 const path = require('path')
 const withImages = require('next-images')
-const withTM = require('next-transpile-modules')(['granen'])
+const withTM = require('next-transpile-modules')(['mayumi'])
 const fs = require('fs')
 
 const updateOpenSearch = () => {
@@ -57,4 +57,4 @@ const config = {
 
 updateOpenSearch()
 
-module.exports = withTM(withImages(config))
+module.exports = withImages(config)

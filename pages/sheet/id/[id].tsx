@@ -5,22 +5,29 @@ import React from 'react'
 import { NextPage, GetServerSideProps } from 'next'
 import { api } from '~/utils/middlewares'
 import { Issue } from '@omcs/request/types'
-import styled from 'styled-components'
+import { styled } from 'mayumi/theme'
 
 import Layout from '~/components/Layout'
 import { Meta } from '~/components/Meta'
 import { Sheet } from '~/components/Sheet'
 
-const Container = styled.div`
-  transform: translateY(-50%);
-  position: relative;
-  top: 50%;
-  @apply p-12 flex flex-col items-center justify-center max-h-full w-full box-border overflow-y-auto;
-
-  .shared-sheet {
-    @apply w-1/2 shadow-2xl flex-1 h-full overflow-y-auto;
-  }
-`
+const Container = styled('div', {
+  p: '$12',
+  flexBox: 'center',
+  flexDirection: 'column',
+  maxHeight: '$full',
+  overflowY: 'auto',
+  w: '$full',
+  m: 'auto',
+  '.shared-sheet': {
+    w: '$1-2',
+    shadow: '$2xl',
+    display: 'block',
+    flex: 1,
+    h: '$full',
+    overflowY: 'auto',
+  },
+})
 
 const CheatSheetById: NextPage<{ issue: Issue }> = (props) => {
   return (

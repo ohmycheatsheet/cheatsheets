@@ -4,33 +4,40 @@ import Link from 'next/link'
 import { Spinner, Hashtag } from 'styled-cssgg'
 import { Label } from '@omcs/request/types'
 import InfiniteScroll from 'react-infinite-scroller'
-import { Layout, Menu } from 'granen'
-import styled from 'styled-components'
+import { Menu } from 'mayumi/menu'
+import { Layout } from 'mayumi/layout'
+import { styled } from 'mayumi/theme'
 
 import { api } from '~/request/client'
 import { PAGE_SIZE } from '~/utils/constants'
 
-const Aside = styled(Layout.Aside)`
-  [data-role='menu-inner'] {
-    @apply w-full overflow-auto;
+const Aside = styled(Layout.Aside, {
+  '.mayumi-menu-inner': {
+    w: '$full',
+    overflow: 'auto',
+    height: 'calc(100vh - 64px)',
+  },
+  '.label-item': {
+    display: 'flex',
+    alignItems: 'center',
+    w: '$full',
+    gap: '$4',
+    color: 'inherit',
+    '--ggs': 0.75,
+  },
+  i: {
+    color: '$secondaryLabelColor',
+  },
+  '.spinner': {
+    w: '$full',
+    flexBox: 'center',
+  },
+})
 
-    height: calc(100vh - 64px);
-  }
-
-  .label-item {
-    @apply flex items-center w-full gap-4;
-
-    --ggs: 0.75;
-  }
-
-  .spinner {
-    @apply w-full flex items-center justify-center;
-  }
-`
-
-const InfScroller = styled(InfiniteScroll)`
-  @apply h-full w-full;
-`
+const InfScroller = styled(InfiniteScroll, {
+  h: '$full',
+  w: '$full',
+})
 
 const getKey = (pageIndex: number, previousPageData: { hits: Label[] } | null) => {
   if (previousPageData && !previousPageData.hits.length) return null // reached the end
@@ -53,7 +60,7 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
   }, [] as Label[])
   return (
     <Aside open={open} className={props.className}>
-      <Menu menuTheme="dark" size="lg">
+      <Menu light={true} size="lg">
         <InfScroller
           hasMore={hasMore}
           pageStart={0}

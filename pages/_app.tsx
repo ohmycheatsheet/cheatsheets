@@ -2,7 +2,8 @@ import App from 'next/app'
 import React from 'react'
 import Progress from 'nprogress'
 import Router from 'next/router'
-import { GlobalStyle } from '~/style/global'
+import { cheatSheetGlobalStyles } from '~/style/global'
+import { ThemeProvider } from 'mayumi/theme'
 
 import '~/style/nprogress.css'
 import '~/style/github.css'
@@ -14,13 +15,13 @@ Router.events.on('routeChangeError', () => Progress.done())
 
 class CustomApp extends App {
   render() {
+    cheatSheetGlobalStyles()
     const { Component, pageProps } = this.props
     return (
-      <>
-        <GlobalStyle />
+      <ThemeProvider>
         <div id="SHEET-CONTAINER" />
         <Component {...pageProps} />
-      </>
+      </ThemeProvider>
     )
   }
 }

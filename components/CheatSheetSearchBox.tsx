@@ -1,9 +1,11 @@
 import React, { useState, useCallback, useRef } from 'react'
 import { algolia } from '@omcs/request/algolia'
-import { Input, Dropdown, Typography } from 'granen'
+import { Input } from 'mayumi/input'
+import { Dropdown } from 'mayumi/dropdown'
+import { Text } from 'mayumi/text'
+import { styled } from 'mayumi/theme'
 import { Search, Spinner } from 'styled-cssgg'
 import debounce from 'lodash.debounce'
-import styled from 'styled-components'
 import type { Hit } from 'react-instantsearch-core'
 import type { SearchClient } from 'algoliasearch'
 
@@ -25,16 +27,10 @@ const unShipProps: any = {
   enterKeyHint: 'search',
 }
 
-const Item = styled(Dropdown.Item)`
-  && {
-    @apply flex-col items-start;
-  }
-
-  p,
-  h3 {
-    @apply m-0;
-  }
-`
+const Item = styled(Dropdown.Item, {
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+})
 
 type HitsProps = {
   value: {
@@ -44,20 +40,18 @@ type HitsProps = {
   loading: boolean
 }
 
-const Menu = styled(Dropdown.Menu)`
-  && {
-    max-height: 400px;
-    overflow-y: auto;
+const Menu = styled(Dropdown.Menu, {
+  '&&': {
+    maxHeight: '$96',
+    overflowY: 'auto',
+  },
+})
 
-    [data-role='menu-subtitle'] {
-      @apply p-0;
-    }
-
-    [data-role='dropdown-menu-item'] {
-      @apply mt-0;
-    }
+const StyledDropdown = styled(Dropdown, {
+  '.mayumi-tooltip-content': {
+    justifyContent: 'flex-start'
   }
-`
+})
 
 const Hits = (props: HitsProps) => {
   const router = useRouter()
@@ -101,7 +95,7 @@ const Hits = (props: HitsProps) => {
                     onClick={() => handleClick(result.index, item.objectID)}
                     key={item.objectID}
                   >
-                    <Typography.Title h3={true}>
+                    <Text h3={true}>
                       {result.index === SEARCH_CHEATSHEET_INDEX_NAME ? (
                         <p
                           dangerouslySetInnerHTML={{
@@ -115,8 +109,8 @@ const Hits = (props: HitsProps) => {
                           }}
                         />
                       )}
-                    </Typography.Title>
-                    <Typography.Paragraph>
+                    </Text>
+                    <Text p={true} type="tertiary">
                       {result.index === SEARCH_CHEATSHEET_INDEX_NAME ? (
                         <p
                           dangerouslySetInnerHTML={{
@@ -130,7 +124,7 @@ const Hits = (props: HitsProps) => {
                           }}
                         />
                       )}
-                    </Typography.Paragraph>
+                    </Text>
                   </Item>
                 )
               })}
@@ -179,13 +173,12 @@ export const CheatSheetSearchBox = () => {
     setLoading(true)
     await searchApi.current(e.currentTarget.value)
   }, [])
+
   return (
-    <Dropdown
-      trigger="click"
-      getPopupContainer={() => document.querySelector('#SEARCH_CONTAINER')!}
+    <StyledDropdown
+      trigger={['click', 'focus']}
+      glassmorphism={true}
       content={<Hits loading={loading} value={value} />}
-      placement="bottomStart"
-      id="SEARCH_CONTAINER"
     >
       <Input
         prefix={<Search />}
@@ -195,6 +188,6 @@ export const CheatSheetSearchBox = () => {
         value={input}
         onChange={handleChange}
       />
-    </Dropdown>
+    </StyledDropdown>
   )
 }

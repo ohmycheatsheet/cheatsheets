@@ -6,7 +6,8 @@ import React from 'react'
 import { Label } from '@omcs/request/types'
 import { useRouter } from 'next/router'
 import { animated, useTrail } from '@react-spring/web'
-import { Box, Description } from 'granen'
+import { Box } from 'mayumi/box'
+import { Description } from 'mayumi/description'
 
 import { Sheet } from '~/components/Sheet'
 
@@ -21,7 +22,7 @@ const LabelItem = (props: LabelProps) => {
       className="label"
       onClick={() => router.push('/sheet/label/[id]', `/sheet/label/${props.v.id}`)}
     >
-      <Description title={props.v.name} content={props.v.description} />
+      <Description title={props.v.name}>{props.v.description}</Description>
     </Box>
   )
 }
@@ -67,7 +68,7 @@ export const CheatSheetSearchResults = ({
     <>
       {transitions.map((props, index) => {
         return (
-          <animated.div key={index} className="cheatSheetSearchItem" style={props}>
+          <animated.div key={index} className="cheatsheet-search-item" style={props}>
             <Sheet
               onClickTitle={() => router.push('/sheet/id/[id]', `/sheet/id/${hits?.[index].id}`)}
               highlight={highlight}

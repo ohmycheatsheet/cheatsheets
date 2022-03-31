@@ -4,61 +4,77 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import zoom from 'medium-zoom'
 import copy from 'copy-to-clipboard'
-import { Layout as GranenLayout, Avatar, Divider, Notification } from 'granen'
-import { GranenThemeProvider } from 'granen/lib/theme/theme-context'
+import { Layout as MayumiLayout } from 'mayumi/layout'
+import { Avatar } from 'mayumi/avatar'
+import { Separator } from 'mayumi/separator'
+import { Notification } from 'mayumi/notification'
 import { useTransition, animated } from '@react-spring/web'
-import styled from 'styled-components'
+import { styled } from 'mayumi/theme'
+import { Icon } from 'mayumi/icons'
 
 import config from '~/.omcsrc'
 import Github from '../assets/github.svg'
 import Twitter from '../assets/twitter.svg'
 import { SideBar } from './SideBar'
-import { Icon } from '~/components/Icon'
 import { useCreateIssue } from '~/hooks/use-create-issue'
 
-const AnimatedPushChevronLeft = styled(animated(PushChevronLeft))`
-  @apply left-0;
-`
-const AnimatedPushChevronRight = styled(animated(PushChevronRight))`
-  @apply right-0;
-`
+const AnimatedPushChevronLeft = styled(animated(PushChevronLeft), {
+  left: '0',
+})
 
-const NavBottom = styled.div`
-  @apply flex flex-col items-center gap-8 opacity-75;
-`
+const AnimatedPushChevronRight = styled(animated(PushChevronRight), {
+  right: '$0',
+})
 
-const Copyright = styled.footer`
-  @apply flex items-center justify-end gap-4 p-4 pt-0 pr-8 pb-2;
+const NavBottom = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '$8',
+  opacity: 0.75,
+})
 
-  .copyright-item {
-    @apply fill-current text-gray-500 cursor-pointer;
+const Copyright = styled('footer', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  gap: '$4',
+  p: '$4',
+  pt: '$0',
+  pr: '$8',
+  pb: '$0',
+})
+
+const Container = styled(MayumiLayout, {
+  display: 'flex',
+  '.inner': {
+    flexBasis: '$0',
+    flexGrow: '1',
+  },
+  '.chevron': {
+    position: 'relative',
+    right: '$0',
+    bottom: '$0',
+    w: '$full',
+    h: '$6',
+    flexBox: 'center',
+    opacity: 0.75,
+    color: '$white',
+    cursor: 'pointer',
+    '&:hover': {
+      opacity: 1,
+    },
+  },
+  '.mayumi-layout-main': {
+    backgroundBlendMode: 'multiply, multiply',
+    backgroundColor: '#202125',
+    backgroundImage:
+      'linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%) #989898',
+  },
+  '.omcs-layout-content': {
+    overflowY: 'auto',
   }
-`
-
-const Container = styled(GranenLayout)`
-  @apply flex bg-gray-100 lg:h-full lg:w-full;
-
-  .inner {
-    flex-basis: 0;
-
-    @apply lg:overflow-scroll flex-grow;
-  }
-
-  .chevron {
-    @apply relative right-0 bottom-0 w-full h-6 flex justify-center items-center opacity-75 hover:opacity-100 text-white cursor-pointer;
-  }
-
-  [data-role='layout-main'] {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%),
-      radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%) #989898;
-    background-color: var(--bg-color-1);
-    background-blend-mode: multiply, multiply;
-  }
-
-  [data-role='layout-content'] {
-    background-color: transparent;
-  }
-`
+})
 
 const G = Github as any
 const T = Twitter as any
@@ -96,29 +112,28 @@ const Layout = ({ children }: Props) => {
     leave: { opacity: 0 },
   })
   return (
-    <GranenThemeProvider defaultThemeType="dark">
-      <Container>
-        <Head>
-          <title>{`${config.owner}'s cheatsheet`}</title>
-        </Head>
-        <GranenLayout.Nav
-          logo={<Avatar src={`https://github.com/${config.owner}.png?size=40`} />}
-          bottom={
-            <NavBottom>
-              <MathPlus onClick={handleCreateIssue} />
-              <div className="chevron" onClick={() => setOpen((prev) => !prev)}>
-                {collapsedTransitions((props, item) => {
-                  return item ? (
-                    <AnimatedPushChevronLeft style={props as any} />
-                  ) : (
-                    <AnimatedPushChevronRight style={props as any} />
-                  )
-                })}
-              </div>
-            </NavBottom>
-          }
-        >
-          <GranenLayout.NavItem itemKey="home">
+    <Container size="screen">
+      <Head>
+        <title>{`${config.owner}'s cheatsheet`}</title>
+      </Head>
+      <MayumiLayout.Navigate
+        bottom={
+          <NavBottom>
+            <MathPlus onClick={handleCreateIssue} />
+            <div className="chevron" onClick={() => setOpen((prev) => !prev)}>
+              {collapsedTransitions((props, item) => {
+                return item ? (
+                  <AnimatedPushChevronLeft style={props as any} />
+                ) : (
+                  <AnimatedPushChevronRight style={props as any} />
+                )
+              })}
+            </div>
+          </NavBottom>
+        }
+        top={
+          <>
+            <Avatar src={`https://github.com/${config.owner}.png?size=40`} />
             <Home
               onClick={() => {
                 router.push({
@@ -126,40 +141,61 @@ const Layout = ({ children }: Props) => {
                 })
               }}
             />
-          </GranenLayout.NavItem>
-          {/* <GranenLayout.NavItem itemKey="search">
-            <Search />
-          </GranenLayout.NavItem> */}
-        </GranenLayout.Nav>
-        <SideBar open={open} />
-        <GranenLayout.Main>
-          <GranenLayout.Content>{children}</GranenLayout.Content>
-          {/* for share cheatsheet image */}
-          <Divider type="horizontal" />
-          <Copyright>
-            <Icon>
-              <G
-                width={14}
-                onClick={() => {
-                  window.open(`https://github.com/${config.owner}/cheatsheets`)
-                }}
-                className="copyright-item"
-              />
-            </Icon>
-            <Icon>
-              <T
-                width={14}
-                onClick={() => {
-                  window.open(`https://twitter.com/${config.owner}`)
-                }}
-                className="copyright-item"
-              />
-            </Icon>
-          </Copyright>
-        </GranenLayout.Main>
-        <Notification />
-      </Container>
-    </GranenThemeProvider>
+          </>
+        }
+      />
+      <SideBar open={open} />
+      <MayumiLayout.Main>
+        <div className="omcs-layout-content">
+          {children}
+        </div>
+        {/* for share cheatsheet image */}
+        <Separator
+          css={{
+            width: 'auto',
+            mx: '-$4',
+          }}
+          type="horizontal"
+        />
+        <Copyright>
+          <Icon
+            css={{
+              cursor: 'pointer',
+              fill: '$textColor',
+              '&:hover': {
+                opacity: 0.8,
+              },
+            }}
+          >
+            <G
+              width={14}
+              onClick={() => {
+                window.open(`https://github.com/${config.owner}/cheatsheets`)
+              }}
+              className="copyright-item"
+            />
+          </Icon>
+          <Icon
+            css={{
+              cursor: 'pointer',
+              fill: '$textColor',
+              '&:hover': {
+                opacity: 0.8,
+              },
+            }}
+          >
+            <T
+              width={14}
+              onClick={() => {
+                window.open(`https://twitter.com/${config.owner}`)
+              }}
+              className="copyright-item"
+            />
+          </Icon>
+        </Copyright>
+      </MayumiLayout.Main>
+      <Notification />
+    </Container>
   )
 }
 

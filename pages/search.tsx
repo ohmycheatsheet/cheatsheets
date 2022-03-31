@@ -5,40 +5,42 @@
 import React from 'react'
 import { NextPage, GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
-import { Typography } from 'granen'
-import styled from 'styled-components'
+import { Text } from 'mayumi/text'
+import { styled } from 'mayumi/theme'
 
 import Layout from '~/components/Layout'
 import { SEARCH_LABELS_INDEX_NAME, SEARCH_CHEATSHEET_INDEX_NAME } from '~/utils/constants'
 import { api } from '~/utils/middlewares'
 import { LabelSearchResults, CheatSheetSearchResults } from '~/components/SearchResults'
 
-const Container = styled.div`
-  @apply px-12 py-6;
-
-  [data-role='title'] {
-    @apply mt-0;
-  }
-
-  .cheatSheetSearchItem {
-    @apply mb-4 w-full float-left;
-  }
-
-  .label-search-results {
-    @apply flex flex-wrap;
-  }
-
-  .label {
-    @apply p-2 cursor-pointer;
-  }
-`
+const Container = styled('div', {
+  px: '$12',
+  py: '$6',
+  overflowY: 'auto',
+  '.mayumi-text': {
+    mt: '$0',
+  },
+  '.cheatsheet-search-item': {
+    mb: '$4',
+    w: '$full',
+    float: 'left',
+  },
+  '.label-search-results': {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  '.label': {
+    p: '$2',
+    cursor: 'pointer',
+  },
+})
 
 const SearchPage: NextPage<{ hits: any }> = (props) => {
   const keyword = useRouter().query.q as string
   return (
     <Layout>
       <Container>
-        <Typography.Title h1={true}>Search Results</Typography.Title>
+        <Text h1={true}>Search Results</Text>
         <CheatSheetSearchResults
           highlight={keyword}
           issues={props.hits[SEARCH_CHEATSHEET_INDEX_NAME]}

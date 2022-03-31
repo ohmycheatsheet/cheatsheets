@@ -7,8 +7,9 @@ import { useRouter } from 'next/router'
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 import { api } from '~/utils/middlewares'
 import { Issue, Label } from '@omcs/request/types'
-import { Typography, Divider } from 'granen'
-import styled from 'styled-components'
+import { Text } from 'mayumi/text'
+import { Separator } from 'mayumi/separator'
+import { styled } from 'mayumi/theme'
 import { api as client } from '~/request/client'
 import InfiniteScroll from 'react-infinite-scroller'
 import useSWRInfinite from 'swr/infinite'
@@ -19,27 +20,23 @@ import { Meta } from '~/components/Meta'
 import { Sheet } from '~/components/Sheet'
 import { PAGE_SIZE } from '~/utils/constants'
 
-const Container = styled.div`
-  @apply px-12 pt-6 pb-1;
-
-  [data-role='title'] {
-    @apply m-0;
-  }
-
-  [data-role='paragraph'] {
-    @apply mt-3 text-base mb-0;
-  }
-
-  &.issues-list {
-    @apply flex-1 overflow-x-auto;
-  }
-`
-
-const DividerLine = styled(Divider)`
-  && {
-    @apply -mx-4 w-auto;
-  }
-`
+const Container = styled('div', {
+  px: '$12',
+  pt: '$6',
+  pb: '$1',
+  'h1.mayumi-text': {
+    m: '$0',
+  },
+  'p.mayumi-text': {
+    mt: '$3',
+    mb: '$0',
+    text: '$base',
+  },
+  '&.issues-list': {
+    flex: 1,
+    overflowX: 'auto',
+  },
+})
 
 const getKey = (
   pageIndex: number,
@@ -67,10 +64,18 @@ const CheetsheetByLabel: NextPage<{ data: Issue[]; label: Label }> = (props) => 
     <Layout>
       <Meta title={props.label?.name} description={props.label?.description} />
       <Container>
-        <Typography.Title h1={true}>{props.label.name}</Typography.Title>
-        <Typography.Paragraph type="secondary">{props.label.description}</Typography.Paragraph>
+        <Text h1={true}>{props.label.name}</Text>
+        <Text p={true} type="secondary">
+          {props.label.description}
+        </Text>
       </Container>
-      <DividerLine type="horizontal" />
+      <Separator
+        css={{
+          width: 'auto',
+          mx: '-$4',
+        }}
+        type="horizontal"
+      />
       <Container className="issues-list">
         <InfiniteScroll
           hasMore={hasMore}
