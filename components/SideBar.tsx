@@ -23,6 +23,7 @@ const Aside = styled(Layout.Aside, {
     w: '$full',
     gap: '$4',
     color: 'inherit',
+    fontWeight: '$medium',
     '--ggs': 0.75,
   },
   i: {
@@ -60,7 +61,7 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
   }, [] as Label[])
   return (
     <Aside open={open} className={props.className}>
-      <Menu light={true} size="lg">
+      <Menu ghost={true} size="lg">
         <InfScroller
           hasMore={hasMore}
           pageStart={0}
@@ -76,10 +77,7 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
             return (
               <Menu.Item key={v.objectID}>
                 <Link href="/sheet/label/[id]" as={`/sheet/label/${v.objectID}`} passHref={true}>
-                  <span className="label-item">
-                    <Hashtag />
-                    {v.name}
-                  </span>
+                  <span className="label-item">{v.name}</span>
                 </Link>
               </Menu.Item>
             )
