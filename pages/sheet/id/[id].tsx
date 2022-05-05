@@ -6,26 +6,47 @@ import { NextPage, GetServerSideProps } from 'next'
 import { api } from '~/utils/middlewares'
 import { Issue } from '@omcs/request/types'
 import { styled } from 'mayumi/theme'
+import { Text } from 'mayumi/text'
+import dayjs from 'dayjs'
 
 import Layout from '~/components/Layout'
 import { Meta } from '~/components/Meta'
-import { Sheet } from '~/components/Sheet'
+import { renderer } from '~/utils/md'
 
 const Container = styled('div', {
-  p: '$12',
   flexBox: 'center',
   flexDirection: 'column',
   maxHeight: '$full',
   overflowY: 'auto',
   w: '$full',
   m: 'auto',
-  '.shared-sheet': {
-    w: '$1-2',
-    shadow: '$2xl',
-    display: 'block',
-    flex: 1,
-    h: '$full',
-    overflowY: 'auto',
+  '.markdown-body': {
+    backgroundColor: 'transparent',
+    w: '$full',
+    color: '$secondaryLabelColor',
+  },
+  '.omcs-issue-nav': {
+    position: 'sticky',
+    top: '$0',
+    glass: '8px',
+    zIndex: '$20',
+    py: '$2',
+    px: '$6',
+    w: '$full',
+    fontWeight: '$semibold',
+    borderBottom: '1px solid $quaternaryLabelColor',
+  },
+  '.omcs-issue-title': {
+    my: '$4',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '$2',
+  },
+  '.omcs-issue-content': {
+    pt: '$12',
+    px: '$6',
+    w: '$full',
+    maxWidth: '$3xl',
   },
 })
 
@@ -34,7 +55,24 @@ const CheatSheetById: NextPage<{ issue: Issue }> = (props) => {
     <Layout>
       <Meta title={props.issue?.title} description={props.issue?.body} />
       <Container>
-        <Sheet isShared={true} className="shared-sheet" v={props.issue} />
+        {/* <Sheet isShared={true} className="shared-sheet" v={props.issue} /> */}
+        <div className="omcs-issue-nav">
+          <Text p={true}>{props.issue.title}</Text>
+        </div>
+        <div className="omcs-issue-content">
+          <div className="omcs-issue-title">
+            <Text h2={true}>{props.issue.title}</Text>
+            <Text type="quaternary" p={true}>
+              {dayjs(props.issue.createdAt).format('YYYY-MM-DD hh:mm:ss')}
+            </Text>
+          </div>
+          <div
+            className="markdown-body"
+            dangerouslySetInnerHTML={{
+              __html: renderer.render(props.issue.body),
+            }}
+          />
+        </div>
       </Container>
     </Layout>
   )

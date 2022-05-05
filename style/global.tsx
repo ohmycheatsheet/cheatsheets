@@ -21,6 +21,18 @@ export const cheatSheetGlobalStyles = globalCss({
     position: 'fixed',
     w: '$1-2',
   },
+  // overwrite one-dark
+  '.markdown-body': {
+    '&&': {
+      backgroundColor: '$black',
+    },
+    '&& pre': {
+      fontFamily: '$mono',
+      backgroundColor: '$windowBackgroundColor',
+      my: '$4',
+      mx: '$0',
+    },
+  },
   '.sheet': {
     '.markdown-body': {
       text: '$base',
@@ -33,14 +45,14 @@ export const cheatSheetGlobalStyles = globalCss({
       w: '$full',
     },
     '.markdown-body code': {
-      fontFamily: "'Fira Code', monospace",
+      fontFamily: '$mono',
       background: 'transparent',
       p: '$0',
       m: '$0',
       text: '$base',
     },
     '.markdown-body pre': {
-      fontFamily: "'Fira Code', monospace",
+      fontFamily: '$mono',
       cursor: 'copy',
       my: '$0',
       rounded: '$none',
