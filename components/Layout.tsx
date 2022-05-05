@@ -146,9 +146,7 @@ const Layout = ({ children }: Props) => {
       />
       <SideBar open={open} />
       <MayumiLayout.Main>
-        <div className="omcs-layout-content">
-          {children}
-        </div>
+        <div className="omcs-layout-content">{children}</div>
         {/* for share cheatsheet image */}
         <Separator
           css={{

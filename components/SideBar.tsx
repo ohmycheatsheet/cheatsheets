@@ -1,10 +1,11 @@
 import React from 'react'
 import useSWRInfinite from 'swr/infinite'
 import Link from 'next/link'
-import { Spinner, Hashtag } from 'styled-cssgg'
+import { Spinner } from 'styled-cssgg'
 import { Label } from '@omcs/request/types'
 import InfiniteScroll from 'react-infinite-scroller'
 import { Menu } from 'mayumi/menu'
+import { Text } from 'mayumi/text'
 import { Layout } from 'mayumi/layout'
 import { styled } from 'mayumi/theme'
 
@@ -15,7 +16,6 @@ const Aside = styled(Layout.Aside, {
   '.mayumi-menu-inner': {
     w: '$full',
     overflow: 'auto',
-    height: 'calc(100vh - 64px)',
   },
   '.label-item': {
     display: 'flex',
@@ -77,7 +77,12 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
             return (
               <Menu.Item key={v.objectID}>
                 <Link href="/sheet/label/[id]" as={`/sheet/label/${v.objectID}`} passHref={true}>
-                  <span className="label-item">{v.name}</span>
+                  <div>
+                    <p className="label-item">{v.name}</p>
+                    <Text p={true} size="sm" type="secondary">
+                      {v.description}
+                    </Text>
+                  </div>
                 </Link>
               </Menu.Item>
             )
