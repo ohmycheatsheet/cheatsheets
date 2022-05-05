@@ -58,8 +58,7 @@ const Container = styled(MayumiLayout, {
   },
   // TODO: sure?
   '.mayumi-layout-main': {
-    px: '$0',
-    py: '$4',
+    p: '$0',
     // backgroundBlendMode: 'multiply, multiply',
     backgroundColor: '$black',
     // backgroundImage:
