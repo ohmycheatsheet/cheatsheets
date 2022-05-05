@@ -22,7 +22,7 @@ import { PAGE_SIZE } from '~/utils/constants'
 
 const Container = styled('div', {
   px: '$12',
-  pt: '$6',
+  pt: '$1',
   pb: '$1',
   'h1.mayumi-text': {
     m: '$0',

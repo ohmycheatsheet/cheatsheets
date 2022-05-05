@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Home, PushChevronLeft, PushChevronRight, MathPlus } from 'styled-cssgg'
+import { Home } from 'styled-cssgg'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import zoom from 'medium-zoom'
@@ -18,20 +18,16 @@ import Twitter from '../assets/twitter.svg'
 import { SideBar } from './SideBar'
 import { useCreateIssue } from '~/hooks/use-create-issue'
 
-const AnimatedPushChevronLeft = styled(animated(PushChevronLeft), {
-  left: '0',
-})
-
-const AnimatedPushChevronRight = styled(animated(PushChevronRight), {
-  right: '$0',
-})
-
 const NavBottom = styled('div', {
-  display: 'flex',
+  flexBox: 'center',
   flexDirection: 'column',
-  alignItems: 'center',
   gap: '$8',
   opacity: 0.75,
+  w: '$6',
+  color: '$white',
+  '& i': {
+    cursor: 'pointer',
+  },
 })
 
 const Copyright = styled('footer', {
@@ -51,22 +47,28 @@ const Container = styled(MayumiLayout, {
     flexBasis: '$0',
     flexGrow: '1',
   },
-  '.chevron': {
+  '.omcs-chevron-group': {
     position: 'relative',
-    right: '$0',
-    bottom: '$0',
     w: '$full',
     h: '$6',
     flexBox: 'center',
-    opacity: 0.75,
     color: '$white',
     cursor: 'pointer',
-    '&:hover': {
-      opacity: 1,
+    '& .gg-push-chevron-left': {
+      position: 'relative',
+      right: '-$0_5',
+      bottom: '$0',
+    },
+    '& .gg-push-chevron-right': {
+      position: 'relative',
+      right: '$0_5',
+      bottom: '$0',
     },
   },
   // TODO: sure?
   '.mayumi-layout-main': {
+    px: '$0',
+    py: '$4',
     // backgroundBlendMode: 'multiply, multiply',
     backgroundColor: '$black',
     // backgroundImage:
@@ -74,6 +76,7 @@ const Container = styled(MayumiLayout, {
   },
   '.omcs-layout-content': {
     overflowY: 'auto',
+    h: '$full',
   },
 })
 
@@ -120,13 +123,13 @@ const Layout = ({ children }: Props) => {
       <MayumiLayout.Navigate
         bottom={
           <NavBottom>
-            <MathPlus onClick={handleCreateIssue} />
-            <div className="chevron" onClick={() => setOpen((prev) => !prev)}>
+            <i className="gg-math-plus" onClick={handleCreateIssue} />
+            <div className="omcs-chevron-group" onClick={() => setOpen((prev) => !prev)}>
               {collapsedTransitions((props, item) => {
                 return item ? (
-                  <AnimatedPushChevronLeft style={props as any} />
+                  <animated.i className="gg-push-chevron-left" style={props as any} />
                 ) : (
-                  <AnimatedPushChevronRight style={props as any} />
+                  <animated.i className="gg-push-chevron-right" style={props as any} />
                 )
               })}
             </div>
