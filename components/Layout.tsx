@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Home } from 'styled-cssgg'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import zoom from 'medium-zoom'
 import copy from 'copy-to-clipboard'
 import { Layout as MayumiLayout } from 'mayumi/layout'
 import { Avatar } from 'mayumi/avatar'
-import { Separator } from 'mayumi/separator'
 import { Notification } from 'mayumi/notification'
 import { useTransition, animated } from '@react-spring/web'
 import { styled } from 'mayumi/theme'
@@ -18,34 +16,22 @@ import Twitter from '../assets/twitter.svg'
 import { SideBar } from './SideBar'
 import { useCreateIssue } from '~/hooks/use-create-issue'
 
-const NavBottom = styled('div', {
-  flexBox: 'center',
-  flexDirection: 'column',
-  gap: '$8',
-  opacity: 0.75,
-  w: '$6',
-  color: '$white',
-  '& i': {
-    cursor: 'pointer',
-  },
-})
-
-const Copyright = styled('footer', {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-end',
-  gap: '$4',
-  p: '$4',
-  pt: '$0',
-  pr: '$8',
-  pb: '$0',
-})
-
 const Container = styled(MayumiLayout, {
   display: 'flex',
   '.inner': {
     flexBasis: '$0',
     flexGrow: '1',
+  },
+  '.omcs-navi-group': {
+    flexBox: 'center',
+    flexDirection: 'column',
+    gap: '$8',
+    opacity: 0.75,
+    w: '$6',
+    color: '$white',
+    '& i': {
+      cursor: 'pointer',
+    },
   },
   '.omcs-chevron-group': {
     position: 'relative',
@@ -64,6 +50,11 @@ const Container = styled(MayumiLayout, {
       right: '$0_5',
       bottom: '$0',
     },
+  },
+  '.mayumi-layout-navigate': {
+    w: '$12',
+    pt: '$6',
+    pb: '$4',
   },
   // TODO: sure?
   '.mayumi-layout-main': {
@@ -122,79 +113,78 @@ const Layout = ({ children }: Props) => {
       </Head>
       <MayumiLayout.Navigate
         bottom={
-          <NavBottom>
-            <i className="gg-math-plus" onClick={handleCreateIssue} />
+          <div className="omcs-navi-group">
+            <Icon
+              css={{
+                cursor: 'pointer',
+                fill: '$textColor',
+                '&:hover': {
+                  opacity: 0.8,
+                },
+              }}
+            >
+              <G
+                width={14}
+                onClick={() => {
+                  window.open(`https://github.com/${config.owner}/cheatsheets`)
+                }}
+                className="copyright-item"
+              />
+            </Icon>
+            <Icon
+              css={{
+                cursor: 'pointer',
+                fill: '$textColor',
+                '&:hover': {
+                  opacity: 0.8,
+                },
+              }}
+            >
+              <T
+                width={14}
+                onClick={() => {
+                  window.open(`https://twitter.com/${config.owner}`)
+                }}
+                className="copyright-item"
+              />
+            </Icon>
+          </div>
+        }
+        top={
+          <div className="omcs-navi-group">
+            {/* <Avatar src={`https://github.com/${config.owner}.png?size=40`} /> */}
+            <Icon>
+              <i
+                className="gg-home"
+                onClick={() => {
+                  router.push({
+                    pathname: '/',
+                  })
+                }}
+              />
+            </Icon>
+            <Icon>
+              <i className="gg-math-plus" onClick={handleCreateIssue} />
+            </Icon>
             <div className="omcs-chevron-group" onClick={() => setOpen((prev) => !prev)}>
               {collapsedTransitions((props, item) => {
                 return item ? (
-                  <animated.i className="gg-push-chevron-left" style={props as any} />
+                  <Icon>
+                    <animated.i className="gg-push-chevron-left" style={props as any} />
+                  </Icon>
                 ) : (
-                  <animated.i className="gg-push-chevron-right" style={props as any} />
+                  <Icon>
+                    <animated.i className="gg-push-chevron-right" style={props as any} />
+                  </Icon>
                 )
               })}
             </div>
-          </NavBottom>
-        }
-        top={
-          <>
-            <Avatar src={`https://github.com/${config.owner}.png?size=40`} />
-            <Home
-              onClick={() => {
-                router.push({
-                  pathname: '/',
-                })
-              }}
-            />
-          </>
+          </div>
         }
       />
       <SideBar open={open} />
       <MayumiLayout.Main>
         <div className="omcs-layout-content">{children}</div>
-        {/* for share cheatsheet image */}
-        <Separator
-          css={{
-            width: 'auto',
-            mx: '-$4',
-          }}
-          type="horizontal"
-        />
-        <Copyright>
-          <Icon
-            css={{
-              cursor: 'pointer',
-              fill: '$textColor',
-              '&:hover': {
-                opacity: 0.8,
-              },
-            }}
-          >
-            <G
-              width={14}
-              onClick={() => {
-                window.open(`https://github.com/${config.owner}/cheatsheets`)
-              }}
-              className="copyright-item"
-            />
-          </Icon>
-          <Icon
-            css={{
-              cursor: 'pointer',
-              fill: '$textColor',
-              '&:hover': {
-                opacity: 0.8,
-              },
-            }}
-          >
-            <T
-              width={14}
-              onClick={() => {
-                window.open(`https://twitter.com/${config.owner}`)
-              }}
-              className="copyright-item"
-            />
-          </Icon>
-        </Copyright>
       </MayumiLayout.Main>
       <Notification />
     </Container>
