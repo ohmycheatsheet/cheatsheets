@@ -20,17 +20,16 @@ const Aside = styled(Layout.Aside, {
     w: '$full',
     overflow: 'auto',
   },
-  '.label-item': {
+  '.omcs-label-item': {
+    w: '$full',
+  },
+  '.omcs-label-title': {
     display: 'flex',
     alignItems: 'center',
     w: '$full',
     gap: '$4',
     color: 'inherit',
     fontWeight: '$medium',
-    '--ggs': 0.75,
-  },
-  i: {
-    color: '$secondaryLabelColor',
   },
   '.spinner': {
     w: '$full',
@@ -80,8 +79,8 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
             return (
               <Menu.Item key={v.objectID}>
                 <Link href="/sheet/label/[id]" as={`/sheet/label/${v.objectID}`} passHref={true}>
-                  <div>
-                    <p className="label-item">{v.name}</p>
+                  <div className="omcs-label-item">
+                    <p className="omcs-label-title">{v.name}</p>
                     <Text p={true} size="sm" type="secondary">
                       {v.description}
                     </Text>
