@@ -65,15 +65,16 @@ const Container = styled(MayumiLayout, {
       opacity: 1,
     },
   },
+  // TODO: sure?
   '.mayumi-layout-main': {
-    backgroundBlendMode: 'multiply, multiply',
-    backgroundColor: '#202125',
-    backgroundImage:
-      'linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%) #989898',
+    // backgroundBlendMode: 'multiply, multiply',
+    backgroundColor: '$black',
+    // backgroundImage:
+      // 'linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%) #989898',
   },
   '.omcs-layout-content': {
     overflowY: 'auto',
-  }
+  },
 })
 
 const G = Github as any

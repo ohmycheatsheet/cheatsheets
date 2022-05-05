@@ -13,6 +13,9 @@ import { api } from '~/request/client'
 import { PAGE_SIZE } from '~/utils/constants'
 
 const Aside = styled(Layout.Aside, {
+  '.mayumi-menu': {
+    w: '$96',
+  },
   '.mayumi-menu-inner': {
     w: '$full',
     overflow: 'auto',
