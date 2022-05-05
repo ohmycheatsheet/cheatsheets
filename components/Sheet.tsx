@@ -15,13 +15,12 @@ import { Issue } from '@omcs/request/types'
 import { Icon } from 'mayumi/icons'
 
 import { share } from '~/utils/share'
-import { createMarkdownRenderer } from '~/utils/md'
+import { renderer } from '~/utils/md'
 
 let Html2Canvas: typeof import('html2canvas')['default']
 import('html2canvas').then((module) => (Html2Canvas = module.default as any))
 
 dayjs.extend(relativeTime)
-const MarkdownIt = createMarkdownRenderer()
 
 type SheetProps = {
   v?: Issue
@@ -212,7 +211,7 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
           key={v.title}
           className="markdown-body"
           dangerouslySetInnerHTML={{
-            __html: doHighlight(MarkdownIt.render(v.body || ''), highlight),
+            __html: doHighlight(renderer.render(v.body || ''), highlight),
           }}
         />
         {!props.isShared ? (
