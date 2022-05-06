@@ -4,6 +4,8 @@ import { Input } from 'mayumi/input'
 import { Dropdown } from 'mayumi/dropdown'
 import { Text } from 'mayumi/text'
 import { styled } from 'mayumi/theme'
+import { Modal } from 'mayumi/modal'
+import { Separator } from 'mayumi/separator'
 import { Search, Spinner } from 'styled-cssgg'
 import debounce from 'lodash.debounce'
 import type { Hit } from 'react-instantsearch-core'
@@ -49,8 +51,8 @@ const Menu = styled(Dropdown.Menu, {
 
 const StyledDropdown = styled(Dropdown, {
   '.mayumi-tooltip-content': {
-    justifyContent: 'flex-start'
-  }
+    justifyContent: 'flex-start',
+  },
 })
 
 const Hits = (props: HitsProps) => {
@@ -83,7 +85,7 @@ const Hits = (props: HitsProps) => {
     }
   }
   return (
-    <Menu>
+    <Menu ghost={true}>
       {props.value
         .filter((item) => item.hits.length !== 0)
         .map((result) => {
@@ -135,7 +137,7 @@ const Hits = (props: HitsProps) => {
   )
 }
 
-export const CheatSheetSearchBox = () => {
+export const SearchModal = () => {
   const [input, setInput] = useState('')
   const [value, setValue] = useState<HitsProps['value']>([])
   const [loading, setLoading] = useState(false)
@@ -173,13 +175,8 @@ export const CheatSheetSearchBox = () => {
     setLoading(true)
     await searchApi.current(e.currentTarget.value)
   }, [])
-
   return (
-    <StyledDropdown
-      trigger={['click', 'focus']}
-      glassmorphism={true}
-      content={<Hits loading={loading} value={value} />}
-    >
+    <Modal glassmorphism={true}>
       <Input
         prefix={<Search />}
         {...unShipProps}
@@ -187,7 +184,13 @@ export const CheatSheetSearchBox = () => {
         size="lg"
         value={input}
         onChange={handleChange}
+        ghost={true}
       />
-    </StyledDropdown>
+      {/* width overflow not working on flex box */}
+      <div style={{ width: '100%' }}>
+        <Separator css={{ mx: '-$4', w: 'auto' }} />
+      </div>
+      <Hits loading={loading} value={value} />
+    </Modal>
   )
 }

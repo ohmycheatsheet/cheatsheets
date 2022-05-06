@@ -17,7 +17,6 @@ class CustomApp extends App {
   render() {
     cheatSheetGlobalStyles()
     const { Component, pageProps } = this.props
-    console.log(pageProps.children)
     return (
       <ThemeProvider>
         <div id="SHEET-CONTAINER" />

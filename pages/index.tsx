@@ -12,7 +12,6 @@ import Layout from '~/components/Layout'
 import { api } from '~/utils/middlewares'
 import { Meta } from '~/components/Meta'
 import { Sheet } from '~/components/Sheet'
-import { CheatSheetSearchBox } from '~/components/CheatSheetSearchBox'
 
 const AnimatedWrapper = styled(animated.div, {
   mb: '$4',
@@ -98,23 +97,6 @@ const Someday = ({
   )
 }
 
-const SearchContainer = styled('div', {
-  mt: '$48',
-  flexBox: 'center',
-  w: '$full',
-  '.mayumi-tooltip': {
-    w: '$3-5',
-    position: 'relative',
-  },
-  '.mayumi-input': {
-    w: '$full',
-    shadow: '$2xl',
-  },
-  '.mayumi-tooltip-content': {
-    w: '$full',
-  },
-})
-
 const EventContainer = styled('div', {
   w: '$4-5',
   m: 'auto',
@@ -130,9 +112,6 @@ const IndexPage: NextPage<{ recent: Issue[]; someday: Issue[] }> = (props) => {
   return (
     <Layout>
       <Meta />
-      <SearchContainer>
-        <CheatSheetSearchBox />
-      </SearchContainer>
       <EventContainer>
         <Someday issues={props.someday} />
         <Recent highlight={keyword} issues={props.recent} />

@@ -11,6 +11,7 @@ import { styled } from 'mayumi/theme'
 
 import { api } from '~/request/client'
 import { PAGE_SIZE } from '~/utils/constants'
+import { SearchModal } from '~/components/CheatSheetSearchBox'
 
 const Aside = styled(Layout.Aside, {
   // '.mayumi-menu': {
@@ -91,6 +92,7 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
           }) || <></>}
         </InfScroller>
       </Menu>
+      <SearchModal />
     </Aside>
   )
 }
