@@ -13,9 +13,9 @@ import { api } from '~/request/client'
 import { PAGE_SIZE } from '~/utils/constants'
 
 const Aside = styled(Layout.Aside, {
-  '.mayumi-menu': {
-    w: '$96',
-  },
+  // '.mayumi-menu': {
+  //   w: '$96',
+  // },
   '.mayumi-menu-inner': {
     w: '$full',
     overflow: 'auto',
@@ -63,7 +63,7 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
   }, [] as Label[])
   return (
     <Aside open={open} className={props.className}>
-      <Menu ghost={true} size="lg">
+      <Menu ghost={true} size="lg" css={{ w: '$96' }}>
         <InfScroller
           hasMore={hasMore}
           pageStart={0}

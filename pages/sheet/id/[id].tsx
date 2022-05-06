@@ -55,9 +55,10 @@ const CheatSheetById: NextPage<{ issue: Issue }> = (props) => {
     <Layout>
       <Meta title={props.issue?.title} description={props.issue?.body} />
       <Container>
-        {/* <Sheet isShared={true} className="shared-sheet" v={props.issue} /> */}
         <div className="omcs-issue-nav">
-          <Text p={true}>{props.issue.title}</Text>
+          <Text p={true}>
+            <time>{props.issue.title}</time>
+          </Text>
         </div>
         <div className="omcs-issue-content">
           <div className="omcs-issue-title">
