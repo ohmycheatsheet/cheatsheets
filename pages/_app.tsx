@@ -6,7 +6,6 @@ import { cheatSheetGlobalStyles } from '~/style/global'
 import { ThemeProvider } from 'mayumi/theme'
 
 import '~/style/nprogress.css'
-import '~/style/icon.css'
 import '~/style/github.css'
 import '~/style/one-dark.css'
 

@@ -4,7 +4,6 @@ import Head from 'next/head'
 import zoom from 'medium-zoom'
 import copy from 'copy-to-clipboard'
 import { Layout as MayumiLayout } from 'mayumi/layout'
-import { Avatar } from 'mayumi/avatar'
 import { Notification } from 'mayumi/notification'
 import { useTransition, animated } from '@react-spring/web'
 import { styled } from 'mayumi/theme'
@@ -12,6 +11,10 @@ import { Icon } from 'mayumi/icons'
 
 import config from '~/.omcsrc'
 import Github from '../assets/github.svg'
+import Home from '../assets/home.svg'
+import MathPlus from '../assets/match-plus.svg'
+import ChevronLeft from '../assets/chevron-left.svg'
+import ChevronRight from '../assets/chevron-right.svg'
 import Twitter from '../assets/twitter.svg'
 import { SideBar } from './SideBar'
 import { useCreateIssue } from '~/hooks/use-create-issue'
@@ -32,6 +35,9 @@ const Container = styled(MayumiLayout, {
     '& i': {
       cursor: 'pointer',
     },
+    '&.sm': {
+      gap: '$4',
+    },
   },
   '.omcs-chevron-group': {
     position: 'relative',
@@ -40,15 +46,22 @@ const Container = styled(MayumiLayout, {
     flexBox: 'center',
     color: '$white',
     cursor: 'pointer',
-    '& .gg-push-chevron-left': {
+    '& .chevron-left': {
       position: 'relative',
-      right: '-$0_5',
+      right: '$1',
       bottom: '$0',
     },
-    '& .gg-push-chevron-right': {
+    '& .chevron-right': {
       position: 'relative',
-      right: '$0_5',
+      right: '$1',
       bottom: '$0',
+    },
+  },
+  '.mayumi-icon': {
+    cursor: 'pointer',
+    fill: '$textColor',
+    '&:hover': {
+      opacity: 0.8,
     },
   },
   '.mayumi-layout-navigate': {
@@ -72,6 +85,10 @@ const Container = styled(MayumiLayout, {
 
 const G = Github as any
 const T = Twitter as any
+const H = Home as any
+const CL = ChevronLeft as any
+const CR = ChevronRight as any
+const MP = MathPlus as any
 
 type Props = {
   children?: React.ReactNode
@@ -113,48 +130,30 @@ const Layout = ({ children }: Props) => {
       <MayumiLayout.Navigate
         bottom={
           <div className="omcs-navi-group">
-            <Icon
-              css={{
-                cursor: 'pointer',
-                fill: '$textColor',
-                '&:hover': {
-                  opacity: 0.8,
-                },
-              }}
-            >
+            <Icon>
               <G
                 width={14}
                 onClick={() => {
                   window.open(`https://github.com/${config.owner}/cheatsheets`)
                 }}
-                className="copyright-item"
               />
             </Icon>
-            <Icon
-              css={{
-                cursor: 'pointer',
-                fill: '$textColor',
-                '&:hover': {
-                  opacity: 0.8,
-                },
-              }}
-            >
+            <Icon>
               <T
                 width={14}
                 onClick={() => {
                   window.open(`https://twitter.com/${config.owner}`)
                 }}
-                className="copyright-item"
               />
             </Icon>
           </div>
         }
         top={
-          <div className="omcs-navi-group">
+          <div className="omcs-navi-group sm">
             {/* <Avatar src={`https://github.com/${config.owner}.png?size=40`} /> */}
             <Icon>
-              <i
-                className="gg-home"
+              <H
+                width={16}
                 onClick={() => {
                   router.push({
                     pathname: '/',
@@ -163,17 +162,21 @@ const Layout = ({ children }: Props) => {
               />
             </Icon>
             <Icon>
-              <i className="gg-math-plus" onClick={handleCreateIssue} />
+              <MP width={16} onClick={handleCreateIssue} />
             </Icon>
             <div className="omcs-chevron-group" onClick={() => setOpen((prev) => !prev)}>
               {collapsedTransitions((props, item) => {
                 return item ? (
                   <Icon>
-                    <animated.i className="gg-push-chevron-left" style={props as any} />
+                    <animated.i className="chevron-left" style={props as any}>
+                      <CL width={16} />
+                    </animated.i>
                   </Icon>
                 ) : (
                   <Icon>
-                    <animated.i className="gg-push-chevron-right" style={props as any} />
+                    <animated.i className="chevron-right" style={props as any}>
+                      <CR width={16} />
+                    </animated.i>
                   </Icon>
                 )
               })}
