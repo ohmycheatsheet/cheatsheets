@@ -3,6 +3,7 @@ import useSWRInfinite from 'swr/infinite'
 import Link from 'next/link'
 import { Label } from '@omcs/request/types'
 import InfiniteScroll from 'react-infinite-scroller'
+import { Kbd } from 'mayumi/kbd'
 import { Menu } from 'mayumi/menu'
 import { Text } from 'mayumi/text'
 import { Layout } from 'mayumi/layout'
@@ -17,6 +18,16 @@ const Aside = styled(Layout.Aside, {
   '.mayumi-menu-inner': {
     w: '$full',
     overflow: 'auto',
+  },
+  '.omcs-aside-header': {
+    position: 'sticky',
+    top: '0',
+    glass: '8px',
+    py: '$2',
+    px: '$6',
+    w: '$full',
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
   '.omcs-label-item': {
     w: '$full',
@@ -61,6 +72,11 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
   }, [] as Label[])
   return (
     <Aside open={open} className={props.className}>
+      <div className="omcs-aside-header">
+        <Text p={true}>
+          <Kbd>⌘</Kbd> + <Kbd>k</Kbd>
+        </Text>
+      </div>
       <Menu ghost={true} size="lg" css={{ w: '$96' }}>
         <InfScroller
           hasMore={hasMore}
