@@ -167,11 +167,7 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
           handleCopyImage()
         }}
       >
-        {copyLoading ? (
-          <Spinner width={14} />
-        ) : (
-          <Image width={14} />
-        )}
+        {copyLoading ? <Spinner width={14} /> : <Image width={14} />}
       </Icon>
     </div>
   )

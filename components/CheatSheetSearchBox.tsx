@@ -51,12 +51,6 @@ const Menu = styled(Dropdown.Menu, {
   },
 })
 
-const StyledDropdown = styled(Dropdown, {
-  '.mayumi-tooltip-content': {
-    justifyContent: 'flex-start',
-  },
-})
-
 const Hits = (props: HitsProps) => {
   const router = useRouter()
   if (props.loading) {

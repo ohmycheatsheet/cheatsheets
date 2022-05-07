@@ -75,7 +75,7 @@ const Container = styled(MayumiLayout, {
     // backgroundBlendMode: 'multiply, multiply',
     backgroundColor: '$black',
     // backgroundImage:
-      // 'linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%) #989898',
+    // 'linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%) #989898',
   },
   '.omcs-layout-content': {
     overflowY: 'auto',
