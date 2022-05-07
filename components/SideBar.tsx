@@ -1,7 +1,6 @@
 import React from 'react'
 import useSWRInfinite from 'swr/infinite'
 import Link from 'next/link'
-import { Spinner } from 'styled-cssgg'
 import { Label } from '@omcs/request/types'
 import InfiniteScroll from 'react-infinite-scroller'
 import { Menu } from 'mayumi/menu'
@@ -12,6 +11,7 @@ import { styled } from 'mayumi/theme'
 import { api } from '~/request/client'
 import { PAGE_SIZE } from '~/utils/constants'
 import { SearchModal } from '~/components/CheatSheetSearchBox'
+import Spinner from '../assets/spinner.svg'
 
 const Aside = styled(Layout.Aside, {
   '.mayumi-menu-inner': {
@@ -69,7 +69,7 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
           loadMore={(page) => setSize(page)}
           loader={
             <div className="spinner">
-              <Spinner />
+              <Spinner width={14} />
             </div>
           }
         >

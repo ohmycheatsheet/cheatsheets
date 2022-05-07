@@ -6,10 +6,12 @@ import { Text } from 'mayumi/text'
 import { styled } from 'mayumi/theme'
 import { Modal } from 'mayumi/modal'
 import { Separator } from 'mayumi/separator'
-import { Search, Spinner } from 'styled-cssgg'
 import debounce from 'lodash.debounce'
 import type { Hit } from 'react-instantsearch-core'
 import type { SearchClient } from 'algoliasearch'
+
+import Spinner from '../assets/spinner.svg'
+import Search from '../assets/search.svg'
 
 import {
   SEARCH_CHEATSHEET_INDEX_NAME,
@@ -61,7 +63,7 @@ const Hits = (props: HitsProps) => {
     return (
       <Dropdown.Menu>
         <Item>
-          <Spinner />
+          <Spinner width={14} />
         </Item>
       </Dropdown.Menu>
     )
@@ -178,7 +180,7 @@ export const SearchModal = () => {
   return (
     <Modal glassmorphism={true} closeIcon={false}>
       <Input
-        prefix={<Search />}
+        prefix={<Search width={14} />}
         {...unShipProps}
         type="input"
         size="lg"

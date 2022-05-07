@@ -1,6 +1,5 @@
 import React from 'react'
 import { NextPage, GetServerSideProps } from 'next'
-import { Spinner } from 'styled-cssgg'
 import { animated, useTrail } from '@react-spring/web'
 import { QueryStatus } from 'react-query'
 import { Issue } from '@omcs/request/types'
@@ -12,6 +11,7 @@ import Layout from '~/components/Layout'
 import { api } from '~/utils/middlewares'
 import { Meta } from '~/components/Meta'
 import { Sheet } from '~/components/Sheet'
+import Spinner from '../assets/spinner.svg'
 
 const AnimatedWrapper = styled(animated.div, {
   mb: '$4',
@@ -33,7 +33,11 @@ const Recent = ({
     from: { opacity: 0 },
   })
   if (status === 'loading') {
-    return <Spinner className="m-auto pt-10" />
+    return (
+      <Icon css={{ m: 'auto', pt: '$10' }}>
+        <Spinner width={14} />
+      </Icon>
+    )
   }
   return (
     <div className="omcs-recent-list">

@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import cx from 'classnames'
 import { useRouter } from 'next/router'
-import { Image, Link, Spinner } from 'styled-cssgg'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { doHighlight } from '@lotips/core'
@@ -16,6 +15,9 @@ import { Icon } from 'mayumi/icons'
 
 import { share } from '~/utils/share'
 import { renderer } from '~/utils/md'
+import Spinner from '../assets/spinner.svg'
+import Image from '../assets/image.svg'
+import Link from '../assets/link.svg'
 
 let Html2Canvas: typeof import('html2canvas')['default']
 import('html2canvas').then((module) => (Html2Canvas = module.default as any))
@@ -154,7 +156,7 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
           })
         }}
       >
-        <Link style={{ '--ggs': 0.7 } as any} />
+        <Link width={14} />
       </Icon>
       <Icon
         className={cx('operation', {
@@ -166,9 +168,9 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
         }}
       >
         {copyLoading ? (
-          <Spinner style={{ '--ggs': 0.7 } as any} />
+          <Spinner width={14} />
         ) : (
-          <Image style={{ '--ggs': 0.7 } as any} />
+          <Image width={14} />
         )}
       </Icon>
     </div>
