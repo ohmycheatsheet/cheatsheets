@@ -68,7 +68,7 @@ export const CheatSheetSearchResults = ({
     <>
       {transitions.map((props, index) => {
         return (
-          <animated.div key={index} className="cheatsheet-search-item" style={props}>
+          <animated.div key={index} style={props}>
             <Sheet
               onClickTitle={() => router.push('/sheet/id/[id]', `/sheet/id/${hits?.[index].id}`)}
               highlight={highlight}

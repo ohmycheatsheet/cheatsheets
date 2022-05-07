@@ -14,16 +14,26 @@ import { api } from '~/utils/middlewares'
 import { LabelSearchResults, CheatSheetSearchResults } from '~/components/SearchResults'
 
 const Container = styled('div', {
-  px: '$12',
-  py: '$6',
-  overflowY: 'auto',
+  w: '$full',
+  h: '$full',
+  overflow: 'auto',
   '.mayumi-text': {
     mt: '$0',
   },
-  '.cheatsheet-search-item': {
-    mb: '$4',
-    w: '$full',
-    float: 'left',
+  '.omcs-search-title': {
+    position: 'sticky',
+    top: '0',
+    glass: '8px',
+    zIndex: '$20',
+    py: '$4',
+    px: '$6',
+    borderBottom: '1px solid $quaternaryLabelColor',
+  },
+  '.omcs-search-results': {
+    p: '$6',
+    gap: '$4',
+    display: 'flex',
+    flexDirection: 'column',
   },
   '.label-search-results': {
     display: 'flex',
@@ -40,12 +50,19 @@ const SearchPage: NextPage<{ hits: any }> = (props) => {
   return (
     <Layout>
       <Container>
-        <Text h1={true}>Search Results</Text>
-        <CheatSheetSearchResults
-          highlight={keyword}
-          issues={props.hits[SEARCH_CHEATSHEET_INDEX_NAME]}
-        />
-        <LabelSearchResults issues={props.hits[SEARCH_LABELS_INDEX_NAME]} />
+        <div className="omcs-search-title">
+          <Text h2={true}>Search Results</Text>
+          <Text p={true} type="quaternary">
+            Keyword: {keyword}
+          </Text>
+        </div>
+        <div className="omcs-search-results">
+          <CheatSheetSearchResults
+            highlight={keyword}
+            issues={props.hits[SEARCH_CHEATSHEET_INDEX_NAME]}
+          />
+          <LabelSearchResults issues={props.hits[SEARCH_LABELS_INDEX_NAME]} />
+        </div>
       </Container>
     </Layout>
   )
