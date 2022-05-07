@@ -15,7 +15,7 @@
     "release": "pnpx changeset version"
   },
   "lint-staged": {
-    "**/**/*.{js,ts,vue,json}": [
+    "**/**/*.{js,ts,tsx,vue,json}": [
       "eslint --fix"
     ]
   },
