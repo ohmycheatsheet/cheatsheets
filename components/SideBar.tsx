@@ -11,7 +11,7 @@ import { styled } from 'mayumi/theme'
 
 import { api } from '~/request/client'
 import { PAGE_SIZE } from '~/utils/constants'
-import { SearchModal } from '~/components/CheatSheetSearchBox'
+import { SearchModal } from '~/components/CheatSheetSearchModal'
 import Spinner from '../assets/spinner.svg'
 
 const Aside = styled(Layout.Aside, {
