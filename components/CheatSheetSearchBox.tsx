@@ -181,6 +181,7 @@ export const SearchModal = () => {
         value={input}
         onChange={handleChange}
         ghost={true}
+        autoFocus={true}
       />
       {/* width overflow not working on flex box */}
       <div style={{ width: '100%' }}>
