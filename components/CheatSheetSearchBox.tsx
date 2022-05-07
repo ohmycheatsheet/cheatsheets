@@ -62,7 +62,7 @@ const Hits = (props: HitsProps) => {
       </Dropdown.Menu>
     )
   }
-  if (props.value.length === 0) {
+  if (props.value.every((result) => result.hits.length === 0)) {
     return (
       <Dropdown.Menu>
         <Item>No Results</Item>
