@@ -176,7 +176,7 @@ export const SearchModal = () => {
     await searchApi.current(e.currentTarget.value)
   }, [])
   return (
-    <Modal glassmorphism={true}>
+    <Modal glassmorphism={true} closeIcon={false}>
       <Input
         prefix={<Search />}
         {...unShipProps}
