@@ -1,4 +1,5 @@
-name: "cheatsheet updater"
+# check if latest ohmysheet found
+name: "Check ohmycheasheet update"
 
 on:
   schedule:
