@@ -1,6 +1,5 @@
 const path = require('path')
 const withImages = require('next-images')
-const withTM = require('next-transpile-modules')(['mayumi'])
 const fs = require('fs')
 
 const updateOpenSearch = () => {

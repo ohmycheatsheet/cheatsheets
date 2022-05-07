@@ -1,7 +1,6 @@
 import React from 'react'
 import { NextPage, GetServerSideProps } from 'next'
-import { animated, useTrail } from '@react-spring/web'
-import { QueryStatus } from 'react-query'
+import { animated } from '@react-spring/web'
 import { Issue } from '@omcs/request/types'
 import { Text } from 'mayumi/text'
 import { styled } from 'mayumi/theme'
@@ -11,39 +10,19 @@ import Layout from '~/components/Layout'
 import { api } from '~/utils/middlewares'
 import { Meta } from '~/components/Meta'
 import { Sheet } from '~/components/Sheet'
-import Spinner from '../assets/spinner.svg'
 
 const AnimatedWrapper = styled(animated.div, {
   mb: '$4',
   w: '$full',
 })
 
-const Recent = ({
-  issues = [],
-  status,
-  highlight,
-}: {
-  issues?: Issue[]
-  status?: QueryStatus
-  highlight?: string
-}) => {
+const Recent = ({ issues = [], highlight }: { issues?: Issue[]; highlight?: string }) => {
   const router = useRouter()
-  const transitions = useTrail<{ opacity: number }>(issues.length, {
-    opacity: status === 'loading' ? 0 : 1,
-    from: { opacity: 0 },
-  })
-  if (status === 'loading') {
-    return (
-      <Icon css={{ m: 'auto', pt: '$10' }}>
-        <Spinner width={14} />
-      </Icon>
-    )
-  }
   return (
     <div className="omcs-recent-list">
       {issues?.length !== 0 ? (
         <>
-          {transitions.slice(0, 2).map((props, index) => {
+          {issues.slice(0, 10).map((props, index) => {
             return (
               <AnimatedWrapper key={index} style={props}>
                 <Sheet
