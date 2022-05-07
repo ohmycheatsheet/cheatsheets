@@ -85,7 +85,6 @@
     "postcss-extend-rule": "3.0.0",
     "postcss-import": "12.0.1",
     "prettier": "2.4.1",
-    "punycode": "2.1.1",
     "tailwindcss": "1.2.0",
     "typescript": "4.4.3"
   },
