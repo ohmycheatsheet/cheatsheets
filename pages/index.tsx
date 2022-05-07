@@ -16,7 +16,6 @@ import { Sheet } from '~/components/Sheet'
 const AnimatedWrapper = styled(animated.div, {
   mb: '$4',
   w: '$full',
-  float: 'left',
 })
 
 const Recent = ({
@@ -37,10 +36,9 @@ const Recent = ({
     return <Spinner className="m-auto pt-10" />
   }
   return (
-    <div>
+    <div className="omcs-recent-list">
       {issues?.length !== 0 ? (
         <>
-          <Text h1={true}>Recently</Text>
           {transitions.slice(0, 2).map((props, index) => {
             return (
               <AnimatedWrapper key={index} style={props}>
@@ -58,53 +56,21 @@ const Recent = ({
   )
 }
 
-const Someday = ({
-  issues = [],
-  status,
-  highlight,
-}: {
-  issues?: Issue[]
-  status?: QueryStatus
-  highlight?: string
-}) => {
-  const router = useRouter()
-  const transitions = useTrail<{ opacity: number }>(issues.length, {
-    opacity: status === 'loading' ? 0 : 1,
-    from: { opacity: 0 },
-  })
-  if (status === 'loading') {
-    return <Spinner className="m-auto pt-10" />
-  }
-  return (
-    <div>
-      {issues?.length !== 0 ? (
-        <>
-          <Text h1={true}>Someday</Text>
-          {transitions.map((props, index) => {
-            return (
-              <AnimatedWrapper key={index} style={props}>
-                <Sheet
-                  onClickTitle={(v) => router.push('/sheet/id/[id]', `/sheet/id/${v.id}`)}
-                  highlight={highlight}
-                  v={issues?.[index]}
-                />
-              </AnimatedWrapper>
-            )
-          })}
-        </>
-      ) : null}
-    </div>
-  )
-}
-
 const EventContainer = styled('div', {
-  w: '$4-5',
-  m: 'auto',
-  px: '$6',
-  pt: '$6',
-  display: 'grid',
-  gap: '$4',
-  gridTemplateColumns: 'repeat(2, minmax(0px, 1fr))',
+  w: '$full',
+  h: '$full',
+  '.omcs-recent-title': {
+    position: 'sticky',
+    top: '$0',
+    glass: '8px',
+    zIndex: '$20',
+    py: '$4',
+    px: '$6',
+    borderBottom: '1px solid $quaternaryLabelColor',
+  },
+  '.omcs-recent-list': {
+    p: '$6',
+  },
 })
 
 const IndexPage: NextPage<{ recent: Issue[]; someday: Issue[] }> = (props) => {
@@ -113,7 +79,9 @@ const IndexPage: NextPage<{ recent: Issue[]; someday: Issue[] }> = (props) => {
     <Layout>
       <Meta />
       <EventContainer>
-        <Someday issues={props.someday} />
+        <div className="omcs-recent-title">
+          <Text h2={true}>Recent</Text>
+        </div>
         <Recent highlight={keyword} issues={props.recent} />
       </EventContainer>
     </Layout>
