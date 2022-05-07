@@ -12,7 +12,6 @@ import { styled } from 'mayumi/theme'
 import { api } from '~/request/client'
 import { PAGE_SIZE } from '~/utils/constants'
 import { SearchModal } from '~/components/CheatSheetSearchModal'
-import Spinner from '../assets/spinner.svg'
 
 const Aside = styled(Layout.Aside, {
   '.mayumi-menu-inner': {
@@ -85,7 +84,7 @@ export const SideBar = ({ open = true, ...props }: { open?: boolean; className?:
           loadMore={(page) => setSize(page)}
           loader={
             <div className="spinner">
-              <Spinner width={14} />
+              <i className="gg-spinner" />
             </div>
           }
         >

@@ -11,7 +11,6 @@ import type { Hit } from 'react-instantsearch-core'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import type { SearchClient } from 'algoliasearch'
 
-import Spinner from '../assets/spinner.svg'
 import Search from '../assets/search.svg'
 
 import {
@@ -100,7 +99,7 @@ const Hits = (props: HitsProps) => {
     return (
       <Menu>
         <Item>
-          <Spinner width={14} />
+          <i className="gg-spinner" />
         </Item>
       </Menu>
     )

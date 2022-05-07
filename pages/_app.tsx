@@ -8,6 +8,7 @@ import { ThemeProvider } from 'mayumi/theme'
 import '~/style/nprogress.css'
 import '~/style/github.css'
 import '~/style/one-dark.css'
+import '~/style/icons.css'
 
 Router.events.on('routeChangeStart', () => Progress.start())
 Router.events.on('routeChangeComplete', () => Progress.done())

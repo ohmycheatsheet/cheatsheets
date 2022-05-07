@@ -15,9 +15,12 @@ import { Icon } from 'mayumi/icons'
 
 import { share } from '~/utils/share'
 import { renderer } from '~/utils/md'
-import Spinner from '../assets/spinner.svg'
-import Image from '../assets/image.svg'
-import Link from '../assets/link.svg'
+import ImageSvg from '../assets/image.svg'
+import LinkSvg from '../assets/link.svg'
+
+// typo issue related next-images
+const Link: any = LinkSvg
+const Image: any = ImageSvg
 
 let Html2Canvas: typeof import('html2canvas')['default']
 import('html2canvas').then((module) => (Html2Canvas = module.default as any))
@@ -167,7 +170,7 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
           handleCopyImage()
         }}
       >
-        {copyLoading ? <Spinner width={14} /> : <Image width={14} />}
+        {copyLoading ? <i className="gg-spinner" /> : <Image width={14} />}
       </Icon>
     </div>
   )
