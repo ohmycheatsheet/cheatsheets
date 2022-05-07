@@ -14,9 +14,6 @@ import { PAGE_SIZE } from '~/utils/constants'
 import { SearchModal } from '~/components/CheatSheetSearchBox'
 
 const Aside = styled(Layout.Aside, {
-  // '.mayumi-menu': {
-  //   w: '$96',
-  // },
   '.mayumi-menu-inner': {
     w: '$full',
     overflow: 'auto',
