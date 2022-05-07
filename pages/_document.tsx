@@ -29,6 +29,7 @@ export default class MyDocument extends Document {
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
         </Head>
         <body>
+          <div id="SHEET-CONTAINER" />
           <Main />
           <NextScript />
         </body>

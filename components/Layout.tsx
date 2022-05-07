@@ -69,13 +69,9 @@ const Container = styled(MayumiLayout, {
     pt: '$6',
     pb: '$4',
   },
-  // TODO: sure?
   '.mayumi-layout-main': {
     p: '$0',
-    // backgroundBlendMode: 'multiply, multiply',
     backgroundColor: '$black',
-    // backgroundImage:
-    // 'linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%) #989898',
   },
   '.omcs-layout-content': {
     overflowY: 'auto',
@@ -97,7 +93,9 @@ type Props = {
 const Layout = ({ children }: Props) => {
   const router = useRouter()
   useEffect(() => {
-    zoom(Array.prototype.slice.call(document.images), { background: 'rgba(255, 255, 255, 0.6)' })
+    zoom(Array.prototype.slice.call(document.images), {
+      background: 'rgba(0, 0, 0, 0.65)',
+    })
   }, [router.asPath])
   const { handleCreateIssue } = useCreateIssue()
   useEffect(() => {

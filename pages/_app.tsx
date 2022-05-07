@@ -19,7 +19,6 @@ class CustomApp extends App {
     const { Component, pageProps } = this.props
     return (
       <ThemeProvider>
-        <div id="SHEET-CONTAINER" />
         <Component {...pageProps} />
       </ThemeProvider>
     )

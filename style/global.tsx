@@ -33,6 +33,10 @@ export const cheatSheetGlobalStyles = globalCss({
       mx: '$0',
     },
   },
+  // make sure medium zoon overlay on top of others
+  '.medium-zoom-overlay, .medium-zoom-image': {
+    zIndex: '$20',
+  },
   '.sheet': {
     '.markdown-body': {
       text: '$base',
