@@ -68,7 +68,7 @@ const HitItem = ({
   children,
   selected,
   ...props
-}: React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement> & { selected?: boolean }>) => {
+}: React.PropsWithChildren<React.HTMLAttributes<HTMLLIElement> & { selected?: boolean }>) => {
   const ref = React.useCallback(
     (node) => {
       if (selected && node) {

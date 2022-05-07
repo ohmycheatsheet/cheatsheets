@@ -37,7 +37,7 @@ export const cheatSheetGlobalStyles = globalCss({
   '.medium-zoom-overlay, .medium-zoom-image': {
     zIndex: '$20',
   },
-  '.sheet': {
+  '.omcs-sheet': {
     '.markdown-body': {
       text: '$base',
       w: '$full',

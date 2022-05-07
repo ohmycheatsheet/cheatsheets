@@ -19,7 +19,7 @@ const LabelItem = (props: LabelProps) => {
   const router = useRouter()
   return (
     <Box
-      className="label"
+      className="omcs-label-search-item"
       onClick={() => router.push('/sheet/label/[id]', `/sheet/label/${props.v.id}`)}
     >
       <Description title={props.v.name}>{props.v.description}</Description>
@@ -34,11 +34,11 @@ export const LabelSearchResults = ({ issues = {} }: { issues?: any }) => {
     to: { opacity: 1 },
   })
   return (
-    <div className="label-search-results">
+    <div className="omcs-label-search-results">
       {hits?.length !== 0
         ? transitions.map((props, index) => {
             return (
-              <animated.div key={index} className="searchItem" style={props}>
+              <animated.div key={index} className="omcs-label-search-item-wrapper" style={props}>
                 <LabelItem v={hits?.[index]} />
               </animated.div>
             )

@@ -46,12 +46,12 @@ const Container = styled(Box, {
   '.mayumi-separator': {
     mb: '$0',
   },
-  '.operations': {
+  '.omcs-sheet-operations': {
     display: 'flex',
     gap: '$4',
     alignItems: 'center',
   },
-  '.operation': {
+  '.omcs-sheet-operation': {
     cursor: 'pointer',
     p: '$4',
     m: '-$4',
@@ -59,11 +59,11 @@ const Container = styled(Box, {
       cursor: 'not-allowed',
     },
   },
-  '.sheet-title': {
+  '.omcs-sheet-title': {
     p: '$4',
     pb: '$0',
   },
-  '.label': {
+  '.omcs-sheet-label': {
     pr: '$2',
     cursor: 'pointer',
     display: 'inline-flex',
@@ -71,7 +71,7 @@ const Container = styled(Box, {
     text: '$sm',
     gap: '$2',
   },
-  '.sheet-subtitle': {
+  '.omcs-sheet-subtitle': {
     m: '$0',
     mb: '$1',
     cursor: 'pointer',
@@ -79,7 +79,7 @@ const Container = styled(Box, {
   '.mayumi-dot': {
     ml: '$2',
   },
-  '.info': {
+  '.omcs-sheet-info': {
     display: 'flex',
     fontStyle: 'italic',
     justifyContent: 'space-between',
@@ -101,7 +101,7 @@ const Controls = styled(Box, {
   rounded: '$md',
   display: 'flex',
   justifyContent: 'flex-start',
-  '.operations': {
+  '.omcs-sheet-operations': {
     display: 'flex',
     gap: '$4',
     alignItems: 'center',
@@ -142,9 +142,9 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
     })
   }, [idcard])
   const Operations = (
-    <div className="operations">
+    <div className="omcs-sheet-operations">
       <Icon
-        className="operation"
+        className="omcs-sheet-operation"
         onClick={() => {
           share(idcard, label, v.title, v.body).then((needNotify) => {
             if (needNotify) {
@@ -159,7 +159,7 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
         <Link width={14} />
       </Icon>
       <Icon
-        className={cx('operation', {
+        className={cx('omcs-sheet-operation', {
           loading: copyLoading,
           last: true,
         })}
@@ -174,13 +174,13 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
   return (
     <>
       <Container
-        className={cx('sheet', props.className)}
+        className={cx('omcs-sheet', props.className)}
         style={props.style}
         key={v.title}
         id={idcard}
       >
-        <div className="sheet-title">
-          <Text className="sheet-subtitle" h3={true}>
+        <div className="omcs-sheet-title">
+          <Text className="omcs-sheet-subtitle" h3={true}>
             <a target="_blank" rel="noreferrer">
               <span
                 dangerouslySetInnerHTML={{
@@ -195,7 +195,7 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
             return (
               <div
                 key={label.id}
-                className="label"
+                className="omcs-sheet-label"
                 style={{ color: `#${label.color}` }}
                 onClick={() => router.push(`/sheet/label/${label.id}`)}
               >
@@ -213,7 +213,7 @@ export const Sheet = ({ v = EMPTY, highlight = '', ...props }: SheetProps) => {
           }}
         />
         {!props.isShared ? (
-          <div className="info">
+          <div className="omcs-sheet-info">
             {Operations}
             <div>
               <time>{dayjs(v.updatedAt).from(dayjs())}</time>

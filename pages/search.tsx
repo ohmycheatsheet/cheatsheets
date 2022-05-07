@@ -35,11 +35,11 @@ const Container = styled('div', {
     display: 'flex',
     flexDirection: 'column',
   },
-  '.label-search-results': {
+  '.omcs-label-search-results': {
     display: 'flex',
     flexWrap: 'wrap',
   },
-  '.label': {
+  '.omcs-label-search-item': {
     p: '$2',
     cursor: 'pointer',
   },
