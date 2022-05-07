@@ -14,12 +14,9 @@ import { Meta } from '~/components/Meta'
 import { renderer } from '~/utils/md'
 
 const Container = styled('div', {
-  flexBox: 'center',
-  flexDirection: 'column',
-  maxHeight: '$full',
-  overflowY: 'auto',
+  h: '$full',
   w: '$full',
-  m: 'auto',
+  overflowY: 'auto',
   '.markdown-body': {
     backgroundColor: 'transparent',
     w: '$full',
@@ -27,7 +24,7 @@ const Container = styled('div', {
   },
   '.omcs-issue-nav': {
     position: 'sticky',
-    top: '$0',
+    top: '0',
     glass: '8px',
     zIndex: '$20',
     py: '$2',
@@ -46,6 +43,7 @@ const Container = styled('div', {
     pt: '$12',
     px: '$6',
     w: '$full',
+    m: 'auto',
     maxWidth: '$3xl',
   },
 })
