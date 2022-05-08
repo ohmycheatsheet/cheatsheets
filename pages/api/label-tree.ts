@@ -12,7 +12,7 @@ export default withCors(
     withOmcs(async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         if (req.method === 'POST') {
-          if (req._login !== process.env.VERCEL_GIT_REPO_OWNER) {
+          if (req._login !== process.env.REPO_OWNER) {
             res.status(401).json({ statusCode: 401, message: 'require auth with github token' })
             return
           }

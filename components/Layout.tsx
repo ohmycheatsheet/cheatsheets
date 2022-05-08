@@ -122,7 +122,7 @@ const Layout = ({ children }: Props) => {
   return (
     <Container size="screen">
       <Head>
-        <title>{`${process.env.VERCEL_GIT_REPO_OWNER}'s cheatsheet`}</title>
+        <title>{`${process.env.REPO_OWNER}'s cheatsheet`}</title>
       </Head>
       <MayumiLayout.Navigate
         bottom={
@@ -131,7 +131,7 @@ const Layout = ({ children }: Props) => {
               <G
                 width={14}
                 onClick={() => {
-                  window.open(`https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}/cheatsheets`)
+                  window.open(`https://github.com/${process.env.REPO_OWNER}/cheatsheets`)
                 }}
               />
             </Icon>
@@ -139,7 +139,7 @@ const Layout = ({ children }: Props) => {
               <T
                 width={14}
                 onClick={() => {
-                  window.open(`https://twitter.com/${process.env.VERCEL_GIT_REPO_OWNER}`)
+                  window.open(`https://twitter.com/${process.env.REPO_OWNER}`)
                 }}
               />
             </Icon>
@@ -147,7 +147,7 @@ const Layout = ({ children }: Props) => {
         }
         top={
           <div className="omcs-navi-group sm">
-            {/* <Avatar src={`https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}.png?size=40`} /> */}
+            {/* <Avatar src={`https://github.com/${process.env.REPO_OWNER}.png?size=40`} /> */}
             <Icon>
               <H
                 width={16}
