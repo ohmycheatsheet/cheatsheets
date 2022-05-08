@@ -25,24 +25,29 @@ const updateOpenSearch = () => {
 
 const define = () => {
   if (process.env.NETLIFY) {
+    console.log('platform', 'netlify')
     console.log('parse git url', process.env.REPOSITORY_URL)
     const { owner } = gitUrlParse(process.env.REPOSITORY_URL)
     // https://docs.netlify.com/configure-builds/environment-variables/#git-metadata
     return {
       REPO_OWNER: JSON.stringify(owner),
       // e.g. https://www.petsofnetlify.com.
-      URL: JSON.stringify(process.env.URL),
+      PUBLIC_URL: JSON.stringify(process.env.URL),
     }
   }
   if (process.env.VERCEL) {
+    console.log('platform', 'vercel')
     // https://vercel.com/docs/concepts/projects/environment-variables
     return {
       REPO_OWNER: JSON.stringify(process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER),
       HOSTNAME: JSON.stringify(process.env.NEXT_PUBLIC_VERCEL_URL),
-      URL: JSON.stringify(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}`),
+      PUBLIC_URL: `https://${JSON.stringify(process.env.NEXT_PUBLIC_VERCEL_URL)}`,
     }
   }
-  return {}
+  return {
+    REPO_OWNER: 'ohmycheatsheet',
+    URL: 'https://ohmycheatsheet.vercel.app',
+  }
 }
 
 /**

@@ -19,11 +19,11 @@ export const Meta = ({
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content={`@${process.env.REPO_OWNER}`} />
       <meta name="twitter:creator" content={`@${process.env.REPO_OWNER}`} />
-      <meta name="twitter:url" content={process.env.URL} />
+      <meta name="twitter:url" content={process.env.PUBLIC_URL} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content="https://i.loli.net/2020/04/24/skJDnlE4rUPKhFg.png" />
-      <meta property="og:url" content={process.env.URL} />
+      <meta property="og:url" content={process.env.PUBLIC_URL} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title} />
       <meta property="og:image" content="https://i.loli.net/2020/04/24/skJDnlE4rUPKhFg.png" />

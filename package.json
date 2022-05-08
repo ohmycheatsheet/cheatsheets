@@ -6,8 +6,7 @@
     "name": "jiangweixian"
   },
   "scripts": {
-    "dev": "next -p 3001",
-    "debug": "cross-env DEBUG=on next -p 3001",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
     "lint:fix": "eslint . --fix",
