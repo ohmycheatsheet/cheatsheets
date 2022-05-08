@@ -1,0 +1,10 @@
+
+[build.environment]
+  NPM_FLAGS="--prefix=/"
+  NODE_VERSION = "14"
+
+[build]
+  command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build && npx pnpm run build:docs"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
