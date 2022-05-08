@@ -29,24 +29,32 @@ const define = () => {
     console.log('parse git url', process.env.REPOSITORY_URL)
     const { owner } = gitUrlParse(process.env.REPOSITORY_URL)
     // https://docs.netlify.com/configure-builds/environment-variables/#git-metadata
-    return {
-      NEXT_PUBLIC_REPO_OWNER: JSON.stringify(owner),
+    const env = {
+      'process.env.NEXT_PUBLIC_REPO_OWNER': JSON.stringify(owner),
       // e.g. https://www.petsofnetlify.com.
-      NEXT_PUBLIC_PUBLIC_URL: JSON.stringify(process.env.URL),
+      'process.env.NEXT_PUBLIC_PUBLIC_URL': JSON.stringify(process.env.URL),
     }
+    console.log(env)
+    return env
   }
   if (process.env.VERCEL) {
     console.log('platform', 'vercel')
     // https://vercel.com/docs/concepts/projects/environment-variables
-    return {
-      NEXT_PUBLIC_REPO_OWNER: JSON.stringify(process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER),
-      NEXT_PUBLIC_HOSTNAME: JSON.stringify(process.env.NEXT_PUBLIC_VERCEL_URL),
-      NEXT_PUBLIC_URL: `https://${JSON.stringify(process.env.NEXT_PUBLIC_VERCEL_URL)}`,
+    const env = {
+      'process.env.NEXT_PUBLIC_REPO_OWNER': JSON.stringify(
+        process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER,
+      ),
+      'process.env.NEXT_PUBLIC_HOSTNAME': JSON.stringify(process.env.NEXT_PUBLIC_VERCEL_URL),
+      'process.env.NEXT_PUBLIC_URL': JSON.stringify(
+        `https://${JSON.stringify(process.env.NEXT_PUBLIC_VERCEL_URL)}`,
+      ),
     }
+    console.log(env)
+    return env
   }
   return {
-    NEXT_PUBLIC_REPO_OWNER: 'ohmycheatsheet',
-    NEXT_PUBLIC_URL: 'https://ohmycheatsheet.vercel.app',
+    'process.env.NEXT_PUBLIC_REPO_OWNER': 'ohmycheatsheet',
+    'process.env.NEXT_PUBLIC_URL': 'https://ohmycheatsheet.vercel.app',
   }
 }
 
