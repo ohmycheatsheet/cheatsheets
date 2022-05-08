@@ -86,7 +86,7 @@ const config = {
   },
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.CI) {
   updateOpenSearch()
 }
 
