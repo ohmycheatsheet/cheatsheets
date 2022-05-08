@@ -9,7 +9,6 @@ import { useTransition, animated } from '@react-spring/web'
 import { styled } from 'mayumi/theme'
 import { Icon } from 'mayumi/icons'
 
-import config from '~/.omcsrc'
 import Github from '../assets/github.svg'
 import Home from '../assets/home.svg'
 import MathPlus from '../assets/match-plus.svg'
@@ -123,7 +122,7 @@ const Layout = ({ children }: Props) => {
   return (
     <Container size="screen">
       <Head>
-        <title>{`${config.owner}'s cheatsheet`}</title>
+        <title>{`${process.env.VERCEL_GIT_REPO_OWNER}'s cheatsheet`}</title>
       </Head>
       <MayumiLayout.Navigate
         bottom={
@@ -132,7 +131,7 @@ const Layout = ({ children }: Props) => {
               <G
                 width={14}
                 onClick={() => {
-                  window.open(`https://github.com/${config.owner}/cheatsheets`)
+                  window.open(`https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}/cheatsheets`)
                 }}
               />
             </Icon>
@@ -140,7 +139,7 @@ const Layout = ({ children }: Props) => {
               <T
                 width={14}
                 onClick={() => {
-                  window.open(`https://twitter.com/${config.owner}`)
+                  window.open(`https://twitter.com/${process.env.VERCEL_GIT_REPO_OWNER}`)
                 }}
               />
             </Icon>
@@ -148,7 +147,7 @@ const Layout = ({ children }: Props) => {
         }
         top={
           <div className="omcs-navi-group sm">
-            {/* <Avatar src={`https://github.com/${config.owner}.png?size=40`} /> */}
+            {/* <Avatar src={`https://github.com/${process.env.VERCEL_GIT_REPO_OWNER}.png?size=40`} /> */}
             <Icon>
               <H
                 width={16}
