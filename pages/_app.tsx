@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import React, { useEffect } from 'react'
 import Progress from 'nprogress'
-import { initialize, pageview } from 'react-ga'
+import ReactGA from 'react-ga4'
 import Router from 'next/router'
 import { cheatSheetGlobalStyles } from '~/style/global'
 import { ThemeProvider } from 'mayumi/theme'
@@ -19,8 +19,8 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     if (process.env.G_ANALYTICS_ID && process.env.NODE_ENV === 'production') {
       // Checks for GA ID and only turns on GA in production
-      initialize(process.env.G_ANALYTICS_ID)
-      pageview(window.location.pathname + window.location.search)
+      ReactGA.initialize(process.env.G_ANALYTICS_ID)
+      ReactGA.send('pageview')
     }
   })
   cheatSheetGlobalStyles()

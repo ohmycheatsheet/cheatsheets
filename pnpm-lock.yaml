@@ -59,7 +59,7 @@ specifiers:
   punycode: ^2.1.1
   react: 17.0.2
   react-dom: 17.0.2
-  react-ga: 3.3.0
+  react-ga4: 1.4.1
   react-infinite-scroller: 1.2.4
   react-responsive-masonry: 2.1.1
   scroll-into-view-if-needed: 2.2.29
@@ -92,7 +92,7 @@ dependencies:
   prismjs: 1.21.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
-  react-ga: 3.3.0_react@17.0.2
+  react-ga4: 1.4.1
   react-infinite-scroller: 1.2.4_react@17.0.2
   react-responsive-masonry: 2.1.1_sfoxds7t5ydpegc3knd667wn6m
   scroll-into-view-if-needed: 2.2.29
@@ -5230,13 +5230,8 @@ packages:
     resolution: {integrity: sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==}
     dev: false
 
-  /react-ga/3.3.0_react@17.0.2:
-    resolution: {integrity: sha512-o8RScHj6Lb8cwy3GMrVH6NJvL+y0zpJvKtc0+wmH7Bt23rszJmnqEQxRbyrqUzk9DTJIHoP42bfO5rswC9SWBQ==}
-    peerDependencies:
-      prop-types: ^15.6.0
-      react: ^15.6.2 || ^16.0 || ^17
-    dependencies:
-      react: 17.0.2
+  /react-ga4/1.4.1:
+    resolution: {integrity: sha512-ioBMEIxd4ePw4YtaloTUgqhQGqz5ebDdC4slEpLgy2sLx1LuZBC9iYCwDymTXzcntw6K1dHX183ulP32nNdG7w==}
     dev: false
 
   /react-hotkeys-hook/3.4.4_sfoxds7t5ydpegc3knd667wn6m:
