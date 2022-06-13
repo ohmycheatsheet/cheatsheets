@@ -64,6 +64,11 @@ const define = () => {
  * @type {import('next').NextConfig}
  */
 const config = {
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: process.env.NODE_ENV !== 'development',
+  },
   webpack: (config, context) => {
     config.resolve.alias['~'] = path.join(__dirname, '')
     if (process.env.NODE_ENV === 'development') {
