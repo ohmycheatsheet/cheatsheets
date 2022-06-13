@@ -32,7 +32,8 @@ const define = () => {
     const env = {
       'process.env.NEXT_PUBLIC_REPO_OWNER': JSON.stringify(owner),
       // e.g. https://www.petsofnetlify.com.
-      'process.env.NEXT_PUBLIC_PUBLIC_URL': JSON.stringify(process.env.URL),
+      'process.env.NEXT_PUBLIC_URL': JSON.stringify(process.env.URL),
+      'process.env.G_ANALYTICS_ID': JSON.stringify(process.env.G_ANALYTICS_ID),
     }
     console.log(env)
     return env
@@ -44,6 +45,7 @@ const define = () => {
       'process.env.NEXT_PUBLIC_REPO_OWNER': JSON.stringify(
         process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER,
       ),
+      'process.env.G_ANALYTICS_ID': JSON.stringify(process.env.G_ANALYTICS_ID),
       'process.env.NEXT_PUBLIC_HOSTNAME': JSON.stringify(process.env.NEXT_PUBLIC_VERCEL_URL),
       'process.env.NEXT_PUBLIC_URL': JSON.stringify(
         `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`,

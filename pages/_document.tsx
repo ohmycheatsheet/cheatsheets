@@ -26,6 +26,18 @@ export default class MyDocument extends Document {
             rel="icon"
             href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨🏿‍💻</text></svg>"
           />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.G_ANALYTICS_ID}`}
+          />
+          <script>
+            window.dataLayer = window.dataLayer || []
+            {/* eslint-disable-next-line prefer-rest-params */}
+            function gtag(){dataLayer.push(arguments)}
+            {/* eslint-disable-next-line prettier/prettier */}
+            gtag('js', new Date())
+            gtag('config', 'G-30MDPK9PHE');
+          </script>
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
         </Head>
         <body>
