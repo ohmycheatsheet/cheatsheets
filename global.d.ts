@@ -6,6 +6,9 @@ declare class ClipboardItem {
   constructor(data: { [mimeType: string]: Blob })
 }
 declare global {
+  interface Window {
+    gtag: any
+  }
   namespace NodeJS {
     interface ProcessEnv {
       // inject on platform vercel: @see {@link https://vercel.com/docs/concepts/projects/environment-variables}
@@ -24,7 +27,9 @@ declare global {
       ALGOLIA_APP_KEY: string
       GITHUB_TOKEN: string
       // google analytics id
-      G_ANALYTICS_ID: string
+      GA_MEASUREMENT_ID: string
     }
   }
 }
+
+export {}
