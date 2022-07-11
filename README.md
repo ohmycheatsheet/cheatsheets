@@ -1,16 +1,32 @@
 [![cheatsheets](https://user-images.githubusercontent.com/6839576/139080815-b8e556a0-fcca-41d0-83a1-0faffaa42be1.png)](https://github.com/ohmycheatsheet/cheatsheets)
 
-***Built with ❤️ by [ohmycheatsheet](https://github.com/ohmycheatsheet/cheatsheets). Cheatsheets is a part of [ohmycheatsheet]() project, a self-host cheatsheet management app! It sync your github issues to website with friendly UI~***
+*Cheatsheets is designed to **Note-Organize-Share**, it's a knowledge cheatsheets management web-app! It allows you manage cheatsheets with github issues, you can organize with labels.* 
 
 ## features
 
-- 🚀 Easy and Fast develop
-- 🔍 Search cheasheet with algolia
-- 🌥️ Cool Website
-  - ✨ Support code-share with url or image
-- 🤖 Useful Assistants Tools
-  - 📩 **Slack bot** - Support send your recently/some-day-your-created cheatsheets with **slack-bot**
+### Easy and fast develop
 
+Fork this template, and follow the develop guide. 🚀  Deploy website on [netlify](https://app.netlify.com/) or [vercel](https://vercel.com) platform. 
+
+### Auto check updates
+
+Provide cron ci workflow, check latest updates from source [template](https://github.com/ohmycheatsheet/cheatsheets) every day. And will open Pull Request with latest features. 
+
+### Sync and search
+
+Each time crud issues or labels, it sync issues data to [algolia](https://www.algolia.com/) datasets. Benifit algolia search engine, therefore ohmycheatsheets support full-text search with highlighting of the search query.
+
+### Share
+
+ohmycheatsheets build on top of [Next.js](https://nextjs.org/) SSR. Therefore, you can share your cheathsheets with url, it's friendly to social media share. If you don't like share with url, ohmycheatsheets also support generate image of cheatsheet, you can download it, and paste it anywhere.
+
+### Notification
+
+Everyday ohmycheatsheets will send a random cheatsheet to your [slack](https://slack.com/) channel. Help your review your knowledage.
+
+### Free
+
+Every thing used in ohmycheatsheets is free.
 
 ### snapshots
 
@@ -22,6 +38,10 @@
 </div>
 
 ## usage
+
+### Datasets
+
+Create a dataset on [algolia](https://www.algolia.com/)
 
 ### Deploy
 
@@ -56,7 +76,7 @@
      - `ALGOLIA_APP_KEY=<ALGOLIA_APP_KEY>` - copy from [algolia-api-keys](https://www.algolia.com/account/api-keys)
      - `SLACK_WEBHOOK=<SLACK_WEBHOOK>` - check [actions-friday](https://github.com/ohmycheatsheet/actions-friday) usage
 
-4. Deploy to Netlify'now, in [Netlify](https://vercel.com/) deployments settings, set below env variables as `Production & Preview & Development Environment Variables`
+4. Deploy to Netlify'now, in [Netlify](https://app.netlify.com/) deployments settings, set below env variables as `Production & Preview & Development Environment Variables`
     
     [![Deploy with Netlify](https://vercel.com/button)](https://app.netlify.com/)
 
