@@ -53,7 +53,7 @@ Create a dataset on [algolia](https://www.algolia.com/)
 
      - `ALGOLIA_APPID=<ALGOLIA_APPID>` - copy from [algolia-api-keys](https://www.algolia.com/account/api-keys)
      - `ALGOLIA_APP_KEY=<ALGOLIA_APP_KEY>` - copy from [algolia-api-keys](https://www.algolia.com/account/api-keys)
-     - `SLACK_WEBHOOK=<SLACK_WEBHOOK>` - check [actions-friday](https://github.com/ohmycheatsheet/actions-friday) usage
+     - (Optional)`SLACK_WEBHOOK=<SLACK_WEBHOOK>` - check [actions-friday](https://github.com/ohmycheatsheet/actions-friday) usage
 
 4. Deploy to Vercel'now, in [Vercel](https://vercel.com/) deployments settings, set below env variables as `Production & Preview & Development Environment Variables`
     
@@ -74,7 +74,7 @@ Create a dataset on [algolia](https://www.algolia.com/)
 
      - `ALGOLIA_APPID=<ALGOLIA_APPID>` - copy from [algolia-api-keys](https://www.algolia.com/account/api-keys)
      - `ALGOLIA_APP_KEY=<ALGOLIA_APP_KEY>` - copy from [algolia-api-keys](https://www.algolia.com/account/api-keys)
-     - `SLACK_WEBHOOK=<SLACK_WEBHOOK>` - check [actions-friday](https://github.com/ohmycheatsheet/actions-friday) usage
+     - (Optional)`SLACK_WEBHOOK=<SLACK_WEBHOOK>` - check [actions-friday](https://github.com/ohmycheatsheet/actions-friday) usage
 
 4. Deploy to Netlify'now, in [Netlify](https://app.netlify.com/) deployments settings, set below env variables as `Production & Preview & Development Environment Variables`
     
@@ -90,3 +90,14 @@ Create a dataset on [algolia](https://www.algolia.com/)
 ### Analytics
 
 Collect page-view data, set env variable `GA_MEASUREMENT_ID` from `https://analytics.google.com/`
+
+## develop
+
+Create `.env` file(makesure it added into `.gitignore`), setup follow environment variables. *If you already setup on vercel platform, just `vercel env pull`*
+
+```
+GITHUB_TOKEN=xxx
+NEXT_PUBLIC_ALGOLIA_SEARCH_KEY=xxx
+NEXT_PUBLIC_ALGOLIA_APPID=xxx
+ALGOLIA_APP_KEY=xxx
+```
