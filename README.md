@@ -33,7 +33,7 @@ Every thing used in ohmycheatsheets is free.
 <div align='center'>
 
 ![homepage](https://user-images.githubusercontent.com/6839576/167288880-0bfae6c1-5f91-4ce3-97df-20889c9cf71c.png)
-*▲ cheatsheets-homepage*
+*▲ omcs*
 
 </div>
 
